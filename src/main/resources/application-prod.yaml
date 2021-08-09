@@ -1,0 +1,10 @@
+logging:
+  config: classpath:logback-spring.xml
+  path: ./logs
+  file: mdc
+  level:
+    root: info
+    tech.yummy: debug
+
+server:
+  port: 8010

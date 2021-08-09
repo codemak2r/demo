@@ -1,0 +1,1 @@
+alter table `testcase` add `type` int not null default 1 comment '1 - api, 2 - front, 3-rpc';
