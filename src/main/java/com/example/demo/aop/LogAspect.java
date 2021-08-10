@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class LogAspect {
-    @Pointcut("@annotation(com.example.demo.aop.annotation.LogMessage)")
+    @Pointcut("@annotation(com.example.demo.annotation.LogMessage)")
     public void pointCut() {}
 
     @Before("pointCut()")

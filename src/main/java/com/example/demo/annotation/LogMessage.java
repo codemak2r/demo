@@ -1,4 +1,4 @@
-package com.example.demo.aop.annotation;
+package com.example.demo.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

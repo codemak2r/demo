@@ -64,10 +64,16 @@ mybatis:
     auto-mapping-behavior: full
     default-statement-timeout: 25000
     map-underscore-to-camel-case: true
-  configuration-properties:
-    offsetAsPageNum: true
-    rowBoundsWithCount: true
-    reasonable: true
+
+
+swagger:
+  title: spring-boot-start
+  description: api doc for  springboot
+  version: 1.4.0
+  license: Apache License, Version 2.0
+  base-package: com.example
+  base-path:
+    - /**
 
 flyway:
   # 启用或禁用 flyway

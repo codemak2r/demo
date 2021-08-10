@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.aop.annotation.LogMessage;
+import com.example.demo.annotation.LogMessage;
 import com.example.demo.service.RpcAotService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
