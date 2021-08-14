@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TestcaseExample {
+public class TEndCaseExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TestcaseExample() {
+    protected Integer offset;
+
+    protected Integer rows;
+
+    public TEndCaseExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -45,6 +49,23 @@ public class TestcaseExample {
         return criteria;
     }
 
+    public TEndCaseExample orderBy(String orderByClause) {
+        this.setOrderByClause(orderByClause);
+        return this;
+    }
+
+    public TEndCaseExample orderBy(String ... orderByClauses) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < orderByClauses.length; i++) {
+            sb.append(orderByClauses[i]);
+            if (i < orderByClauses.length - 1) {
+                sb.append(" , ");
+            }
+        }
+        this.setOrderByClause(sb.toString());
+        return this;
+    }
+
     public Criteria createCriteria() {
         Criteria criteria = createCriteriaInternal();
         if (oredCriteria.size() == 0) {
@@ -54,7 +75,7 @@ public class TestcaseExample {
     }
 
     protected Criteria createCriteriaInternal() {
-        Criteria criteria = new Criteria();
+        Criteria criteria = new Criteria(this);
         return criteria;
     }
 
@@ -62,6 +83,62 @@ public class TestcaseExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
+        rows = null;
+        offset = null;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
+    public Integer getOffset() {
+        return this.offset;
+    }
+
+    public void setRows(Integer rows) {
+        this.rows = rows;
+    }
+
+    public Integer getRows() {
+        return this.rows;
+    }
+
+    public TEndCaseExample limit(Integer rows) {
+        this.rows = rows;
+        return this;
+    }
+
+    public TEndCaseExample limit(Integer offset, Integer rows) {
+        this.offset = offset;
+        this.rows = rows;
+        return this;
+    }
+
+    public TEndCaseExample page(Integer page, Integer pageSize) {
+        this.offset = page * pageSize;
+        this.rows = pageSize;
+        return this;
+    }
+
+    public static Criteria newAndCreateCriteria() {
+        TEndCaseExample example = new TEndCaseExample();
+        return example.createCriteria();
+    }
+
+    public TEndCaseExample when(boolean condition, IExampleWhen then) {
+        if (condition) {
+            then.example(this);
+        }
+        return this;
+    }
+
+    public TEndCaseExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
+        if (condition) {
+            then.example(this);
+        } else {
+            otherwise.example(this);
+        }
+        return this;
     }
 
     protected abstract static class GeneratedCriteria {
@@ -120,8 +197,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andIdEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("id = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -130,8 +217,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andIdGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("id > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -140,8 +237,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andIdLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("id < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -180,8 +287,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andNameEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`name` = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andNameNotEqualTo(String value) {
             addCriterion("`name` <>", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`name` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -190,8 +307,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andNameGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`name` > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andNameGreaterThanOrEqualTo(String value) {
             addCriterion("`name` >=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`name` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -200,8 +327,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andNameLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`name` < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andNameLessThanOrEqualTo(String value) {
             addCriterion("`name` <=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`name` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -250,8 +387,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andDescEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`desc` = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andDescNotEqualTo(String value) {
             addCriterion("`desc` <>", value, "desc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`desc` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -260,8 +407,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andDescGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`desc` > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andDescGreaterThanOrEqualTo(String value) {
             addCriterion("`desc` >=", value, "desc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`desc` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -270,8 +427,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andDescLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`desc` < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andDescLessThanOrEqualTo(String value) {
             addCriterion("`desc` <=", value, "desc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`desc` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -320,8 +487,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andStatusEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`status` = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andStatusNotEqualTo(Integer value) {
             addCriterion("`status` <>", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`status` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -330,8 +507,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andStatusGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`status` > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("`status` >=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`status` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -340,8 +527,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andStatusLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`status` < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andStatusLessThanOrEqualTo(Integer value) {
             addCriterion("`status` <=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`status` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -380,8 +577,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andResultEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`result` = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andResultNotEqualTo(Integer value) {
             addCriterion("`result` <>", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`result` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -390,8 +597,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andResultGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`result` > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andResultGreaterThanOrEqualTo(Integer value) {
             addCriterion("`result` >=", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`result` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -400,8 +617,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andResultLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`result` < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andResultLessThanOrEqualTo(Integer value) {
             addCriterion("`result` <=", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`result` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -440,8 +667,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andOwnerEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`owner` = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andOwnerNotEqualTo(String value) {
             addCriterion("`owner` <>", value, "owner");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`owner` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -450,8 +687,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andOwnerGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`owner` > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andOwnerGreaterThanOrEqualTo(String value) {
             addCriterion("`owner` >=", value, "owner");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`owner` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -460,8 +707,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andOwnerLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`owner` < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andOwnerLessThanOrEqualTo(String value) {
             addCriterion("`owner` <=", value, "owner");
+            return (Criteria) this;
+        }
+
+        public Criteria andOwnerLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("`owner` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -510,8 +767,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andCreatorEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("creator = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andCreatorNotEqualTo(String value) {
             addCriterion("creator <>", value, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("creator <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -520,8 +787,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andCreatorGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("creator > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andCreatorGreaterThanOrEqualTo(String value) {
             addCriterion("creator >=", value, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("creator >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -530,8 +807,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andCreatorLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("creator < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andCreatorLessThanOrEqualTo(String value) {
             addCriterion("creator <=", value, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("creator <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -580,8 +867,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andModifierEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modifier = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andModifierNotEqualTo(String value) {
             addCriterion("modifier <>", value, "modifier");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifierNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modifier <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -590,8 +887,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andModifierGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modifier > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andModifierGreaterThanOrEqualTo(String value) {
             addCriterion("modifier >=", value, "modifier");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifierGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modifier >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -600,8 +907,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andModifierLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modifier < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andModifierLessThanOrEqualTo(String value) {
             addCriterion("modifier <=", value, "modifier");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifierLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modifier <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -650,8 +967,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andCreateTimeEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("create_time = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeNotEqualTo(Date value) {
             addCriterion("create_time <>", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("create_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -660,8 +987,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andCreateTimeGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("create_time > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
             addCriterion("create_time >=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("create_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -670,8 +1007,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andCreateTimeLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("create_time < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
             addCriterion("create_time <=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("create_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -710,8 +1057,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andModifyTimeEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modify_time = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andModifyTimeNotEqualTo(Date value) {
             addCriterion("modify_time <>", value, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modify_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -720,8 +1077,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andModifyTimeGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modify_time > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andModifyTimeGreaterThanOrEqualTo(Date value) {
             addCriterion("modify_time >=", value, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modify_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -730,8 +1097,18 @@ public class TestcaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andModifyTimeLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modify_time < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
         public Criteria andModifyTimeLessThanOrEqualTo(Date value) {
             addCriterion("modify_time <=", value, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modify_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
@@ -757,9 +1134,44 @@ public class TestcaseExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
+        private TEndCaseExample example;
 
-        protected Criteria() {
+        protected Criteria(TEndCaseExample example) {
             super();
+            this.example = example;
+        }
+
+        public TEndCaseExample example() {
+            return this.example;
+        }
+
+        @Deprecated
+        public Criteria andIf(boolean ifAdd, ICriteriaAdd add) {
+            if (ifAdd) {
+                add.add(this);
+            }
+            return this;
+        }
+
+        public Criteria when(boolean condition, ICriteriaWhen then) {
+            if (condition) {
+                then.criteria(this);
+            }
+            return this;
+        }
+
+        public Criteria when(boolean condition, ICriteriaWhen then, ICriteriaWhen otherwise) {
+            if (condition) {
+                then.criteria(this);
+            } else {
+                otherwise.criteria(this);
+            }
+            return this;
+        }
+
+        @Deprecated
+        public interface ICriteriaAdd {
+            Criteria add(Criteria add);
         }
     }
 
@@ -847,5 +1259,13 @@ public class TestcaseExample {
         protected Criterion(String condition, Object value, Object secondValue) {
             this(condition, value, secondValue, null);
         }
+    }
+
+    public interface ICriteriaWhen {
+        void criteria(Criteria criteria);
+    }
+
+    public interface IExampleWhen {
+        void example(com.example.demo.model.TEndCaseExample example);
     }
 }

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mappers.TEndConfMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.TEndConf">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="browser" jdbcType="INTEGER" property="browser" />
+    <result column="test_url" jdbcType="VARCHAR" property="testUrl" />
+    <result column="t_case_id" jdbcType="BIGINT" property="tCaseId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, browser, test_url, t_case_id
+  </sql>
+  <select id="selectByExample" parameterType="com.example.demo.model.TEndConfExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_end_conf
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="rows != null">
+      <if test="offset != null">
+        limit ${offset}, ${rows}
+      </if>
+      <if test="offset == null">
+        limit ${rows}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_end_conf
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_end_conf
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.demo.model.TEndConfExample">
+    delete from t_end_conf
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.TEndConf">
+    insert into t_end_conf (id, browser, test_url, 
+      t_case_id)
+    values (#{id,jdbcType=BIGINT}, #{browser,jdbcType=INTEGER}, #{testUrl,jdbcType=VARCHAR}, 
+      #{tCaseId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.TEndConf">
+    insert into t_end_conf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="browser != null">
+        browser,
+      </if>
+      <if test="testUrl != null">
+        test_url,
+      </if>
+      <if test="tCaseId != null">
+        t_case_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="browser != null">
+        #{browser,jdbcType=INTEGER},
+      </if>
+      <if test="testUrl != null">
+        #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tCaseId != null">
+        #{tCaseId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.demo.model.TEndConfExample" resultType="java.lang.Long">
+    select count(*) from t_end_conf
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_end_conf
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.browser != null">
+        browser = #{record.browser,jdbcType=INTEGER},
+      </if>
+      <if test="record.testUrl != null">
+        test_url = #{record.testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tCaseId != null">
+        t_case_id = #{record.tCaseId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_end_conf
+    set id = #{record.id,jdbcType=BIGINT},
+      browser = #{record.browser,jdbcType=INTEGER},
+      test_url = #{record.testUrl,jdbcType=VARCHAR},
+      t_case_id = #{record.tCaseId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TEndConf">
+    update t_end_conf
+    <set>
+      <if test="browser != null">
+        browser = #{browser,jdbcType=INTEGER},
+      </if>
+      <if test="testUrl != null">
+        test_url = #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tCaseId != null">
+        t_case_id = #{tCaseId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TEndConf">
+    update t_end_conf
+    set browser = #{browser,jdbcType=INTEGER},
+      test_url = #{testUrl,jdbcType=VARCHAR},
+      t_case_id = #{tCaseId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectOneByExample" parameterType="com.example.demo.model.TEndConfExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_end_conf
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+  <insert id="batchInsert" parameterType="map">
+    insert into t_end_conf
+    (id, browser, test_url, t_case_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.browser,jdbcType=INTEGER}, #{item.testUrl,jdbcType=VARCHAR}, 
+        #{item.tCaseId,jdbcType=BIGINT})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelective" parameterType="map">
+    insert into t_end_conf (
+    <foreach collection="selective" item="column" separator=",">
+      ${column.escapedColumnName}
+    </foreach>
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <foreach collection="selective" item="column" separator=",">
+        <if test="'id'.toString() == column.value">
+          #{item.id,jdbcType=BIGINT}
+        </if>
+        <if test="'browser'.toString() == column.value">
+          #{item.browser,jdbcType=INTEGER}
+        </if>
+        <if test="'test_url'.toString() == column.value">
+          #{item.testUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="'t_case_id'.toString() == column.value">
+          #{item.tCaseId,jdbcType=BIGINT}
+        </if>
+      </foreach>
+      )
+    </foreach>
+  </insert>
+</mapper>

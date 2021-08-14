@@ -13,6 +13,13 @@
 
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <plugin type="com.itfsw.mybatis.generator.plugins.SelectOneByExamplePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.ExampleEnhancedPlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.ModelColumnPlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.BatchInsertPlugin"/>
+
+
         <!-- Lombok插件 -->
         <plugin type="com.itfsw.mybatis.generator.plugins.LombokPlugin">
             <!-- @Data 默认开启,同时插件会对子类自动附加@EqualsAndHashCode(callSuper = true)，@ToString(callSuper = true) -->
@@ -74,8 +81,10 @@
         <table tableName="test_case_review_scenario"/>
         <table tableName="test_plan"/>
         <table tableName="test_case_test"/>-->
-        <table tableName="testcase"></table>
-        <table tableName="self_var"></table>
+        <table tableName="t_end_case"></table>
+        <table tableName="t_end_conf"></table>
+        <table tableName="t_end_steps"></table>
+
 
 
     </context>

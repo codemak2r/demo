@@ -88,7 +88,7 @@ flyway:
   # 设置为 true 后 flyway 将在需要 baseline 的时候, 自动执行一次 baseline。
   baseline-on-migrate: true
   # 指定 baseline 的版本号,默认值为 1, 低于该版本号的 SQL 文件, migrate 时会被忽略
-  baseline-version: 0
+  baseline-version: 1
   # 字符编码 默认 UTF-8
   encoding: UTF-8
   # 是否允许不按顺序迁移 开发建议 true  生产建议 false

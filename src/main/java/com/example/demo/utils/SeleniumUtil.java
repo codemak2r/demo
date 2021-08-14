@@ -9,14 +9,18 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.function.Function;
 
 import static com.example.demo.enums.ElementType.*;
 
@@ -46,21 +50,33 @@ public class SeleniumUtil{
        this.webDriver.get(url);
     }
 
-    public void invoke( String action, String elementType, String element, String value) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        if (elementType == null && element == null) {
-            SeleniumUtil.class.getMethod(action).invoke(this);
-            return ;
+    public void invoke( String action, String elementType, String element,  String value) throws Exception {
+        this.setValue(value);
+        // this.findElement(elementType,element);
+        By by = this.locateElement(elementType, element);
+        // https://blog.testproject.io/2019/12/10/smart-selenium-waits-fluent-wait-avoid-flakiness/
+        if (by != null) {
+            Wait wait = new FluentWait(this.webDriver)
+                    .withTimeout(Duration.ofMillis(1000))
+                    .pollingEvery(Duration.ofMillis(350))
+                    .ignoring(NoSuchElementException.class);
+            this.webElement = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
+                @Override
+                public WebElement apply(WebDriver webDriver) {
+                    return webDriver.findElement(by);
+                }
+            });
+        } else {
+            this.webElement = null;
         }
-
-        if (value != null) {
-            this.setValue(value);
-        }
-
-        this.findElement(elementType,element);
         SeleniumUtil.class.getMethod(action).invoke(this);
     }
 
     private By locateElement(String elementType, String element){
+        if(elementType == null || element == null) {
+            return null;
+        }
+
         try {
             return (By)By.class.getMethod(elementType, String.class).invoke(null, element);
         } catch (IllegalAccessException e) {
@@ -72,10 +88,17 @@ public class SeleniumUtil{
         }
         return null;
     }
+
     public void findElement(String elementType, String element){
+        if(elementType == null || element == null) {
+            this.webElement = null ;
+            return;
+        }
+
         By by = this.locateElement(elementType, element);
         this.webElement = this.webDriver.findElement(by);
     }
+
 
     public void click() {
         this.webElement.click();
@@ -86,110 +109,91 @@ public class SeleniumUtil{
     }
 
     public void send() {
-        this.webElement.sendKeys(this.value);
+        this.webElement.sendKeys((CharSequence) this.value);
     }
+
+    public void pause(){
+        try {
+            Thread.sleep(Long.valueOf(this.value));
+        } catch (InterruptedException e) {
+            log.error(e.getMessage());
+        }
+    }
+
+
+    public void close() {
+
+    }
+
+    public void confirm(){
+
+    }
+
+    public void doubleClick(){
+
+
+    }
+
+    public void waitForElement(){
+
+    }
+
 
     public void clear() {
 
     }
 
-    public String getTagName() {
-        return null;
-    }
-
-    public String getDomProperty(String name) {
-        return null;
-    }
-
-    
-    public String getDomAttribute(String name) {
-        return null;
-    }
-
-    
-    public String getAttribute(String name) {
-        return null;
-    }
-
-    
-    public String getAriaRole() {
-        return null;
-    }
-
-    
-    public String getAccessibleName() {
-        return null;
-    }
-
-    
     public boolean isSelected() {
-        return false;
+        return this.webElement.isSelected();
     }
 
     
     public boolean isEnabled() {
-        return false;
+        return this.webElement.isEnabled();
     }
 
     
     public String getText() {
-        return null;
-    }
-
-
-    public void get(String url) {
-
-    }
-
-    public String getCurrentUrl() {
-        return null;
-    }
-
-    public String getTitle() {
-        return null;
-    }
-
-    public List<WebElement> findElements(By by) {
-        return null;
-    }
-
-    
-    public WebElement findElement(By by) {
-        return null;
-    }
-
-    public String getPageSource() {
-        return null;
-    }
-
-    public void close() {
-
+        return this.webElement.getText();
     }
 
     public void quit() {
         this.webDriver.quit();
     }
 
+
+    public String getCurrentUrl() {
+        return this.webDriver.getCurrentUrl();
+    }
+
+    public String getTitle() {
+        return this.webDriver.getTitle();
+    }
+
+    public String getPageSource() {
+        return this.webDriver.getPageSource();
+    }
+
+
     public Set<String> getWindowHandles() {
-        return null;
+        return this.webDriver.getWindowHandles();
     }
 
     public String getWindowHandle() {
-        return null;
+        return this.webDriver.getWindowHandle();
     }
 
     public void switchTo() {
-
+        this.webDriver.switchTo();
     }
 
     public void navigate() {
-
+        this.webDriver.navigate();
     }
 
     public void manage() {
 
     }
-
 
     public boolean isDisplayed() {
         return false;
@@ -207,11 +211,6 @@ public class SeleniumUtil{
 
     
     public Rectangle getRect() {
-        return null;
-    }
-
-    
-    public String getCssValue(String propertyName) {
         return null;
     }
 

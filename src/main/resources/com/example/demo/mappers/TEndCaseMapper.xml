@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mappers.TestcaseMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.model.Testcase">
+<mapper namespace="com.example.demo.mappers.TEndCaseMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.TEndCase">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="desc" jdbcType="VARCHAR" property="desc" />
@@ -72,50 +72,59 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, `desc`, `status`, `result`, `owner`, creator, modifier, create_time,
+    id, `name`, `desc`, `status`, `result`, `owner`, creator, modifier, create_time, 
     modify_time
   </sql>
-  <select id="selectByExample" parameterType="com.example.demo.model.TestcaseExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.model.TEndCaseExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from testcase
+    from t_end_case
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+    <if test="rows != null">
+      <if test="offset != null">
+        limit ${offset}, ${rows}
+      </if>
+      <if test="offset == null">
+        limit ${rows}
+      </if>
+    </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
-    from testcase
+    from t_end_case
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from testcase
+    delete from t_end_case
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.demo.model.TestcaseExample">
-    delete from testcase
+  <delete id="deleteByExample" parameterType="com.example.demo.model.TEndCaseExample">
+    delete from t_end_case
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.demo.model.Testcase">
-    insert into testcase (id, `name`, `desc`,
-    `status`, `result`, `owner`,
-    creator, modifier, create_time,
-    modify_time)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR},
-    #{status,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{owner,jdbcType=VARCHAR},
-    #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, now(),now()
+  <insert id="insert" parameterType="com.example.demo.model.TEndCase">
+    insert into t_end_case (id, `name`, `desc`, 
+      `status`, `result`, `owner`, 
+      creator, modifier, create_time, 
+      modify_time)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{result,jdbcType=INTEGER}, #{owner,jdbcType=VARCHAR}, 
+      #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.model.Testcase">
-    insert into testcase
+  <insert id="insertSelective" parameterType="com.example.demo.model.TEndCase">
+    insert into t_end_case
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -181,14 +190,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.demo.model.TestcaseExample" resultType="java.lang.Long">
-    select count(*) from testcase
+  <select id="countByExample" parameterType="com.example.demo.model.TEndCaseExample" resultType="java.lang.Long">
+    select count(*) from t_end_case
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update testcase
+    update t_end_case
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -220,32 +229,29 @@
       <if test="record.modifyTime != null">
         modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.modifyTime == null">
-        modify_time = now(),
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update testcase
+    update t_end_case
     set id = #{record.id,jdbcType=BIGINT},
-    `name` = #{record.name,jdbcType=VARCHAR},
-    `desc` = #{record.desc,jdbcType=VARCHAR},
-    `status` = #{record.status,jdbcType=INTEGER},
-    `result` = #{record.result,jdbcType=INTEGER},
-    `owner` = #{record.owner,jdbcType=VARCHAR},
-    creator = #{record.creator,jdbcType=VARCHAR},
-    modifier = #{record.modifier,jdbcType=VARCHAR},
-    create_time = #{record.createTime,jdbcType=TIMESTAMP},
-    modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
+      `name` = #{record.name,jdbcType=VARCHAR},
+      `desc` = #{record.desc,jdbcType=VARCHAR},
+      `status` = #{record.status,jdbcType=INTEGER},
+      `result` = #{record.result,jdbcType=INTEGER},
+      `owner` = #{record.owner,jdbcType=VARCHAR},
+      creator = #{record.creator,jdbcType=VARCHAR},
+      modifier = #{record.modifier,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.Testcase">
-    update testcase
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TEndCase">
+    update t_end_case
     <set>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
@@ -274,23 +280,88 @@
       <if test="modifyTime != null">
         modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyTime == null">
-        modify_time = now(),
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.Testcase">
-    update testcase
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TEndCase">
+    update t_end_case
     set `name` = #{name,jdbcType=VARCHAR},
-    `desc` = #{desc,jdbcType=VARCHAR},
-    `status` = #{status,jdbcType=INTEGER},
-    `result` = #{result,jdbcType=INTEGER},
-    `owner` = #{owner,jdbcType=VARCHAR},
-    creator = #{creator,jdbcType=VARCHAR},
-    modifier = #{modifier,jdbcType=VARCHAR},
-    create_time = #{createTime,jdbcType=TIMESTAMP},
-    modify_time = now()
+      `desc` = #{desc,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      `result` = #{result,jdbcType=INTEGER},
+      `owner` = #{owner,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectOneByExample" parameterType="com.example.demo.model.TEndCaseExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_end_case
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+  <insert id="batchInsert" parameterType="map">
+    insert into t_end_case
+    (id, `name`, `desc`, `status`, `result`, `owner`, creator, modifier, create_time, 
+      modify_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.desc,jdbcType=VARCHAR}, 
+        #{item.status,jdbcType=INTEGER}, #{item.result,jdbcType=INTEGER}, #{item.owner,jdbcType=VARCHAR}, 
+        #{item.creator,jdbcType=VARCHAR}, #{item.modifier,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.modifyTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelective" parameterType="map">
+    insert into t_end_case (
+    <foreach collection="selective" item="column" separator=",">
+      ${column.escapedColumnName}
+    </foreach>
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <foreach collection="selective" item="column" separator=",">
+        <if test="'id'.toString() == column.value">
+          #{item.id,jdbcType=BIGINT}
+        </if>
+        <if test="'name'.toString() == column.value">
+          #{item.name,jdbcType=VARCHAR}
+        </if>
+        <if test="'desc'.toString() == column.value">
+          #{item.desc,jdbcType=VARCHAR}
+        </if>
+        <if test="'status'.toString() == column.value">
+          #{item.status,jdbcType=INTEGER}
+        </if>
+        <if test="'result'.toString() == column.value">
+          #{item.result,jdbcType=INTEGER}
+        </if>
+        <if test="'owner'.toString() == column.value">
+          #{item.owner,jdbcType=VARCHAR}
+        </if>
+        <if test="'creator'.toString() == column.value">
+          #{item.creator,jdbcType=VARCHAR}
+        </if>
+        <if test="'modifier'.toString() == column.value">
+          #{item.modifier,jdbcType=VARCHAR}
+        </if>
+        <if test="'create_time'.toString() == column.value">
+          #{item.createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'modify_time'.toString() == column.value">
+          #{item.modifyTime,jdbcType=TIMESTAMP}
+        </if>
+      </foreach>
+      )
+    </foreach>
+  </insert>
 </mapper>

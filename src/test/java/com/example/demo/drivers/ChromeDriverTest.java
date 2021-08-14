@@ -34,15 +34,13 @@ public class ChromeDriverTest {
     }
 
     @Test
-    public void testInvokeUtil() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InterruptedException {
+    public void testInvokeUtil() throws Exception {
         SeleniumUtil seleniumUtil = new SeleniumUtil(1, "https://www.baidu.com");
         seleniumUtil.invoke("click","id","s-top-loginbtn",null);
-        Thread.sleep(3000);
+        seleniumUtil.invoke("pause", null, null, "3000");
         seleniumUtil.invoke("click","id","TANGRAM__PSP_11__footerULoginBtn",null);
         seleniumUtil.invoke("send","id","TANGRAM__PSP_11__userName","a403481704@sina.cn");
         seleniumUtil.invoke("send","id","TANGRAM__PSP_11__password","a403481704");
         seleniumUtil.invoke("click","id","TANGRAM__PSP_11__submit",null);
-
-
     }
 }

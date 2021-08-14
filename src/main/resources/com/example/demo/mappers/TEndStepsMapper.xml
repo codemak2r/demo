@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mappers.TEndStepsMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.TEndSteps">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="t_case_id" jdbcType="BIGINT" property="tCaseId" />
+    <result column="action" jdbcType="VARCHAR" property="action" />
+    <result column="element_type" jdbcType="VARCHAR" property="elementType" />
+    <result column="element" jdbcType="VARCHAR" property="element" />
+    <result column="val" jdbcType="VARCHAR" property="val" />
+    <result column="order_no" jdbcType="DOUBLE" property="orderNo" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, t_case_id, `action`, element_type, `element`, val, order_no
+  </sql>
+  <select id="selectByExample" parameterType="com.example.demo.model.TEndStepsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_end_steps
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="rows != null">
+      <if test="offset != null">
+        limit ${offset}, ${rows}
+      </if>
+      <if test="offset == null">
+        limit ${rows}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_end_steps
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_end_steps
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.demo.model.TEndStepsExample">
+    delete from t_end_steps
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.TEndSteps">
+    insert into t_end_steps (id, t_case_id, `action`, 
+      element_type, `element`, val, 
+      order_no)
+    values (#{id,jdbcType=BIGINT}, #{tCaseId,jdbcType=BIGINT}, #{action,jdbcType=VARCHAR}, 
+      #{elementType,jdbcType=VARCHAR}, #{element,jdbcType=VARCHAR}, #{val,jdbcType=VARCHAR}, 
+      #{orderNo,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.TEndSteps">
+    insert into t_end_steps
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tCaseId != null">
+        t_case_id,
+      </if>
+      <if test="action != null">
+        `action`,
+      </if>
+      <if test="elementType != null">
+        element_type,
+      </if>
+      <if test="element != null">
+        `element`,
+      </if>
+      <if test="val != null">
+        val,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tCaseId != null">
+        #{tCaseId,jdbcType=BIGINT},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="elementType != null">
+        #{elementType,jdbcType=VARCHAR},
+      </if>
+      <if test="element != null">
+        #{element,jdbcType=VARCHAR},
+      </if>
+      <if test="val != null">
+        #{val,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.demo.model.TEndStepsExample" resultType="java.lang.Long">
+    select count(*) from t_end_steps
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_end_steps
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.tCaseId != null">
+        t_case_id = #{record.tCaseId,jdbcType=BIGINT},
+      </if>
+      <if test="record.action != null">
+        `action` = #{record.action,jdbcType=VARCHAR},
+      </if>
+      <if test="record.elementType != null">
+        element_type = #{record.elementType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.element != null">
+        `element` = #{record.element,jdbcType=VARCHAR},
+      </if>
+      <if test="record.val != null">
+        val = #{record.val,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderNo != null">
+        order_no = #{record.orderNo,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_end_steps
+    set id = #{record.id,jdbcType=BIGINT},
+      t_case_id = #{record.tCaseId,jdbcType=BIGINT},
+      `action` = #{record.action,jdbcType=VARCHAR},
+      element_type = #{record.elementType,jdbcType=VARCHAR},
+      `element` = #{record.element,jdbcType=VARCHAR},
+      val = #{record.val,jdbcType=VARCHAR},
+      order_no = #{record.orderNo,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TEndSteps">
+    update t_end_steps
+    <set>
+      <if test="tCaseId != null">
+        t_case_id = #{tCaseId,jdbcType=BIGINT},
+      </if>
+      <if test="action != null">
+        `action` = #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="elementType != null">
+        element_type = #{elementType,jdbcType=VARCHAR},
+      </if>
+      <if test="element != null">
+        `element` = #{element,jdbcType=VARCHAR},
+      </if>
+      <if test="val != null">
+        val = #{val,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TEndSteps">
+    update t_end_steps
+    set t_case_id = #{tCaseId,jdbcType=BIGINT},
+      `action` = #{action,jdbcType=VARCHAR},
+      element_type = #{elementType,jdbcType=VARCHAR},
+      `element` = #{element,jdbcType=VARCHAR},
+      val = #{val,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectOneByExample" parameterType="com.example.demo.model.TEndStepsExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_end_steps
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+  <insert id="batchInsert" parameterType="map">
+    insert into t_end_steps
+    (id, t_case_id, `action`, element_type, `element`, val, order_no)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.tCaseId,jdbcType=BIGINT}, #{item.action,jdbcType=VARCHAR}, 
+        #{item.elementType,jdbcType=VARCHAR}, #{item.element,jdbcType=VARCHAR}, #{item.val,jdbcType=VARCHAR}, 
+        #{item.orderNo,jdbcType=DOUBLE})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelective" parameterType="map">
+    insert into t_end_steps (
+    <foreach collection="selective" item="column" separator=",">
+      ${column.escapedColumnName}
+    </foreach>
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <foreach collection="selective" item="column" separator=",">
+        <if test="'id'.toString() == column.value">
+          #{item.id,jdbcType=BIGINT}
+        </if>
+        <if test="'t_case_id'.toString() == column.value">
+          #{item.tCaseId,jdbcType=BIGINT}
+        </if>
+        <if test="'action'.toString() == column.value">
+          #{item.action,jdbcType=VARCHAR}
+        </if>
+        <if test="'element_type'.toString() == column.value">
+          #{item.elementType,jdbcType=VARCHAR}
+        </if>
+        <if test="'element'.toString() == column.value">
+          #{item.element,jdbcType=VARCHAR}
+        </if>
+        <if test="'val'.toString() == column.value">
+          #{item.val,jdbcType=VARCHAR}
+        </if>
+        <if test="'order_no'.toString() == column.value">
+          #{item.orderNo,jdbcType=DOUBLE}
+        </if>
+      </foreach>
+      )
+    </foreach>
+  </insert>
+</mapper>
