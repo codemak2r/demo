@@ -43,4 +43,8 @@ public class ChromeDriverTest {
         seleniumUtil.invoke("send","id","TANGRAM__PSP_11__password","a403481704");
         seleniumUtil.invoke("click","id","TANGRAM__PSP_11__submit",null);
     }
+    @Test
+    public void etstMian(){
+        System.out.println(51/50);
+    }
 }

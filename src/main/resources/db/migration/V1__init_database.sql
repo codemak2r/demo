@@ -5,7 +5,6 @@ create table if not exists `t_end_case`(
     `status` int default 0 comment '0 启用 ，1 禁用',
     `result` int default 0 comment '-1 失败， 1 成功 ， 0 新建',
     `owner` varchar(20) not null comment '维护人',
-    `creator` varchar(20) not null comment '创建人',
     `modifier` varchar(20) comment '最近一次修改人',
     `create_time` datetime  comment '创建时间',
     `modify_time` datetime comment '修改时间',

@@ -2,7 +2,6 @@ package com.example.demo.utils;
 
 import cn.hutool.core.io.FileUtil;
 import com.example.demo.enums.BrowserType;
-import com.example.demo.enums.ElementType;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
@@ -17,40 +16,36 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 import java.util.function.Function;
-
-import static com.example.demo.enums.ElementType.*;
 
 /**
  * @author: zw.wen
  */
 @Slf4j
 @Setter
-public class SeleniumUtil{
+public class SeleniumUtil {
+    private final String FILE_WITH_PATH = "";
     private WebDriver webDriver;
     private WebElement webElement;
     private String value;
-    private final String FILE_WITH_PATH = "";
 
     public SeleniumUtil(int browser, String url) {
-       try{
-           if(BrowserType.FIREBOX.getIndex() == browser) {
-               FirefoxOptions firefoxOptions = new FirefoxOptions();
-               this.webDriver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), firefoxOptions);
-           }else{
-               ChromeOptions chromeOptions = new ChromeOptions();
-               this.webDriver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), chromeOptions);
-           }
-       }catch (MalformedURLException e) {
+        try {
+            if (BrowserType.FIREBOX.getIndex() == browser) {
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                this.webDriver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), firefoxOptions);
+            } else {
+                ChromeOptions chromeOptions = new ChromeOptions();
+                this.webDriver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), chromeOptions);
+            }
+        } catch (MalformedURLException e) {
 
-       }
-       this.webDriver.get(url);
+        }
+        this.webDriver.get(url);
     }
 
-    public void invoke( String action, String elementType, String element,  String value) throws Exception {
+    public void invoke(String action, String elementType, String element, String value) {
         this.setValue(value);
         // this.findElement(elementType,element);
         By by = this.locateElement(elementType, element);
@@ -69,16 +64,21 @@ public class SeleniumUtil{
         } else {
             this.webElement = null;
         }
-        SeleniumUtil.class.getMethod(action).invoke(this);
+
+        try {
+            SeleniumUtil.class.getMethod(action).invoke(this);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
-    private By locateElement(String elementType, String element){
-        if(elementType == null || element == null) {
+    private By locateElement(String elementType, String element) {
+        if (elementType == null || element == null) {
             return null;
         }
 
         try {
-            return (By)By.class.getMethod(elementType, String.class).invoke(null, element);
+            return (By) By.class.getMethod(elementType, String.class).invoke(null, element);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -89,9 +89,9 @@ public class SeleniumUtil{
         return null;
     }
 
-    public void findElement(String elementType, String element){
-        if(elementType == null || element == null) {
-            this.webElement = null ;
+    public void findElement(String elementType, String element) {
+        if (elementType == null || element == null) {
+            this.webElement = null;
             return;
         }
 
@@ -109,10 +109,10 @@ public class SeleniumUtil{
     }
 
     public void send() {
-        this.webElement.sendKeys((CharSequence) this.value);
+        this.webElement.sendKeys(this.value);
     }
 
-    public void pause(){
+    public void pause() {
         try {
             Thread.sleep(Long.valueOf(this.value));
         } catch (InterruptedException e) {
@@ -125,16 +125,16 @@ public class SeleniumUtil{
 
     }
 
-    public void confirm(){
+    public void confirm() {
 
     }
 
-    public void doubleClick(){
+    public void doubleClick() {
 
 
     }
 
-    public void waitForElement(){
+    public void waitForElement() {
 
     }
 
@@ -147,12 +147,12 @@ public class SeleniumUtil{
         return this.webElement.isSelected();
     }
 
-    
+
     public boolean isEnabled() {
         return this.webElement.isEnabled();
     }
 
-    
+
     public String getText() {
         return this.webElement.getText();
     }
@@ -199,26 +199,26 @@ public class SeleniumUtil{
         return false;
     }
 
-    
+
     public Point getLocation() {
         return null;
     }
 
-    
+
     public Dimension getSize() {
         return null;
     }
 
-    
+
     public Rectangle getRect() {
         return null;
     }
 
-    
-    public void getScreenshotAs(){
-        TakesScreenshot scrShot =((TakesScreenshot)this.webDriver);
-        File srcFile=scrShot.getScreenshotAs(OutputType.FILE);
-        File destFile=new File(FILE_WITH_PATH);
+
+    public void getScreenshotAs() {
+        TakesScreenshot scrShot = ((TakesScreenshot) this.webDriver);
+        File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
+        File destFile = new File(FILE_WITH_PATH);
         FileUtil.copy(srcFile, destFile, true);
     }
 }

@@ -2,8 +2,9 @@ package com.example.demo.mappers;
 
 import com.example.demo.model.TEndSteps;
 import com.example.demo.model.TEndStepsExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TEndStepsMapper {
     long countByExample(TEndStepsExample example);
@@ -32,5 +33,5 @@ public interface TEndStepsMapper {
 
     int batchInsert(@Param("list") List<TEndSteps> list);
 
-    int batchInsertSelective(@Param("list") List<TEndSteps> list, @Param("selective") TEndSteps.Column ... selective);
+    int batchInsertSelective(@Param("list") List<TEndSteps> list, @Param("selective") TEndSteps.Column... selective);
 }

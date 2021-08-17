@@ -8,10 +8,10 @@ public enum Response {
     FAIL(400, "fail"),
     ERROR(500, "error");
 
-    private int status;
-    private String msg;
+    private final int status;
+    private final String msg;
 
-    Response(int  status, String msg) {
+    Response(int status, String msg) {
         this.status = status;
         this.msg = msg;
     }

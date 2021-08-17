@@ -16,6 +16,7 @@ import java.util.concurrent.Future;
 public class TaskFactory {
 
     @Async
-    public Future doTask(TaskDTO taskDTO) throws InterruptedException{
-        return new AsyncResult<>("Task-" + taskDTO.getTaskId() +" accomplished!");
-    }}
+    public Future doTask(TaskDTO taskDTO) throws InterruptedException {
+        return new AsyncResult<>("Task-" + taskDTO.getTaskId() + " accomplished!");
+    }
+}

@@ -15,5 +15,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class CatchExceptionAspect {
     @Pointcut("@annotation(com.example.demo.annotation.CatchException)")
-    public void pointCut() {}
+    public void pointCut() {
+    }
 }

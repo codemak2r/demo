@@ -22,9 +22,9 @@ public class WebSocketService {
         WebSocketServer webSocketServer = concurrentHashMap.get(taskId);
 
         try {
-            if(webSocketServer != null) {
+            if (webSocketServer != null) {
                 webSocketServer.sendMessage(msg);
-            }else{
+            } else {
                 log.error("【客户端已经退出】");
             }
 

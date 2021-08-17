@@ -19,20 +19,25 @@ public class TEndCaseExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public void setOrderByClause(String orderByClause) {
-        this.orderByClause = orderByClause;
+    public static Criteria newAndCreateCriteria() {
+        TEndCaseExample example = new TEndCaseExample();
+        return example.createCriteria();
     }
 
     public String getOrderByClause() {
         return orderByClause;
     }
 
-    public void setDistinct(boolean distinct) {
-        this.distinct = distinct;
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
     }
 
     public boolean isDistinct() {
         return distinct;
+    }
+
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
     }
 
     public List<Criteria> getOredCriteria() {
@@ -54,7 +59,7 @@ public class TEndCaseExample {
         return this;
     }
 
-    public TEndCaseExample orderBy(String ... orderByClauses) {
+    public TEndCaseExample orderBy(String... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -87,20 +92,20 @@ public class TEndCaseExample {
         offset = null;
     }
 
-    public void setOffset(Integer offset) {
-        this.offset = offset;
-    }
-
     public Integer getOffset() {
         return this.offset;
     }
 
-    public void setRows(Integer rows) {
-        this.rows = rows;
+    public void setOffset(Integer offset) {
+        this.offset = offset;
     }
 
     public Integer getRows() {
         return this.rows;
+    }
+
+    public void setRows(Integer rows) {
+        this.rows = rows;
     }
 
     public TEndCaseExample limit(Integer rows) {
@@ -120,11 +125,6 @@ public class TEndCaseExample {
         return this;
     }
 
-    public static Criteria newAndCreateCriteria() {
-        TEndCaseExample example = new TEndCaseExample();
-        return example.createCriteria();
-    }
-
     public TEndCaseExample when(boolean condition, IExampleWhen then) {
         if (condition) {
             then.example(this);
@@ -139,6 +139,14 @@ public class TEndCaseExample {
             otherwise.example(this);
         }
         return this;
+    }
+
+    public interface ICriteriaWhen {
+        void criteria(Criteria criteria);
+    }
+
+    public interface IExampleWhen {
+        void example(com.example.demo.model.TEndCaseExample example);
     }
 
     protected abstract static class GeneratedCriteria {
@@ -1134,7 +1142,7 @@ public class TEndCaseExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private TEndCaseExample example;
+        private final TEndCaseExample example;
 
         protected Criteria(TEndCaseExample example) {
             super();
@@ -1176,7 +1184,7 @@ public class TEndCaseExample {
     }
 
     public static class Criterion {
-        private String condition;
+        private final String condition;
 
         private Object value;
 
@@ -1190,39 +1198,7 @@ public class TEndCaseExample {
 
         private boolean listValue;
 
-        private String typeHandler;
-
-        public String getCondition() {
-            return condition;
-        }
-
-        public Object getValue() {
-            return value;
-        }
-
-        public Object getSecondValue() {
-            return secondValue;
-        }
-
-        public boolean isNoValue() {
-            return noValue;
-        }
-
-        public boolean isSingleValue() {
-            return singleValue;
-        }
-
-        public boolean isBetweenValue() {
-            return betweenValue;
-        }
-
-        public boolean isListValue() {
-            return listValue;
-        }
-
-        public String getTypeHandler() {
-            return typeHandler;
-        }
+        private final String typeHandler;
 
         protected Criterion(String condition) {
             super();
@@ -1259,13 +1235,37 @@ public class TEndCaseExample {
         protected Criterion(String condition, Object value, Object secondValue) {
             this(condition, value, secondValue, null);
         }
-    }
 
-    public interface ICriteriaWhen {
-        void criteria(Criteria criteria);
-    }
+        public String getCondition() {
+            return condition;
+        }
 
-    public interface IExampleWhen {
-        void example(com.example.demo.model.TEndCaseExample example);
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
     }
 }

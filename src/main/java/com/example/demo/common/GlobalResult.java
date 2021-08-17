@@ -16,9 +16,10 @@ public class GlobalResult<T> {
     private String message;
     private T data;
 
-    public GlobalResult(){}
+    public GlobalResult() {
+    }
 
-    public GlobalResult(int status){
+    public GlobalResult(int status) {
         this.status = status;
     }
 
@@ -32,27 +33,27 @@ public class GlobalResult<T> {
         this.data = data;
     }
 
-    public static GlobalResult success(){
+    public static GlobalResult success() {
         return new GlobalResult(Response.SUCCESS.getStatus(), Response.SUCCESS.getMsg());
     }
 
-    public static<T> GlobalResult<T> success(T data){
+    public static <T> GlobalResult<T> success(T data) {
         return new GlobalResult(Response.SUCCESS.getStatus(), Response.SUCCESS.getMsg(), data);
     }
 
-    public static GlobalResult fail(){
+    public static GlobalResult fail() {
         return new GlobalResult(Response.FAIL.getStatus(), Response.FAIL.getMsg());
     }
 
-    public static<T> GlobalResult fail(T data){
+    public static <T> GlobalResult fail(T data) {
         return new GlobalResult(Response.FAIL.getStatus(), Response.FAIL.getMsg(), data);
     }
 
-    public static GlobalResult error(){
+    public static GlobalResult error() {
         return new GlobalResult(Response.ERROR.getStatus(), Response.ERROR.getMsg());
     }
 
-    public static<T> GlobalResult error(T data){
+    public static <T> GlobalResult error(T data) {
         return new GlobalResult(Response.ERROR.getStatus(), Response.ERROR.getMsg(), data);
     }
 }

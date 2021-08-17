@@ -4,17 +4,17 @@ import lombok.Getter;
 
 @Getter
 public enum ElementType {
-    ID(1 ),
+    ID(1),
     NAME(2),
     XPATH(3),
     CSS(4),
-    TAG(5 ),
+    TAG(5),
     CLASS(6);
 
-    private int num;
+    private final int num;
 
 
-    ElementType(int num){
+    ElementType(int num) {
         this.num = num;
     }
 }
