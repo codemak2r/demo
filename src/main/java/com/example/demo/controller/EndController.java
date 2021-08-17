@@ -32,9 +32,9 @@ public class EndController {
      */
     @GetMapping("/cases")
     @ApiOperation(value = "查询所有的case", notes = "")
-    public GlobalResult<List<TEndCase>> getCaseList() {
+    public List<TEndCase> getCaseList() {
         List<TEndCase> tEndCases = endService.queryAllCases();
-        return GlobalResult.success(tEndCases);
+        return tEndCases;
     }
 
     /**
@@ -44,9 +44,9 @@ public class EndController {
      */
     @GetMapping("/cases/{caseId}")
     @ApiOperation(value = "查询具体的case")
-    public GlobalResult<TEndCase> getCaseDetail(@PathVariable long caseId) {
+    public TEndCase getCaseDetail(@PathVariable long caseId) {
         TEndCase tEndCases = endService.getDetailCase(caseId);
-        return GlobalResult.success(tEndCases);
+        return tEndCases;
     }
 
     /**
