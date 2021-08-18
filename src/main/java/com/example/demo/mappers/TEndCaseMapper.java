@@ -2,9 +2,8 @@ package com.example.demo.mappers;
 
 import com.example.demo.model.TEndCase;
 import com.example.demo.model.TEndCaseExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TEndCaseMapper {
     long countByExample(TEndCaseExample example);
@@ -33,5 +32,5 @@ public interface TEndCaseMapper {
 
     int batchInsert(@Param("list") List<TEndCase> list);
 
-    int batchInsertSelective(@Param("list") List<TEndCase> list, @Param("selective") TEndCase.Column... selective);
+    int batchInsertSelective(@Param("list") List<TEndCase> list, @Param("selective") TEndCase.Column ... selective);
 }

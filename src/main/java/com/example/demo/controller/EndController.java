@@ -81,8 +81,8 @@ public class EndController {
      */
     @DeleteMapping("/cases/{caseId}")
     @ApiOperation(value = "删除具体的case")
-    public GlobalResult deleteCase(@PathVariable long caseId){
-        return GlobalResult.success();
+    public void deleteCase(@PathVariable long caseId){
+
     }
 
     /**
@@ -92,8 +92,8 @@ public class EndController {
      */
     @PutMapping("/cases/{caseId}")
     @ApiOperation(value = "更新Case")
-    public GlobalResult updateConf(@PathVariable long caseId){
-        return GlobalResult.success();
+    public void updateConf(@PathVariable long caseId){
+
     }
 
     /**

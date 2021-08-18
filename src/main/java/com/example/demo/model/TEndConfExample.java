@@ -18,25 +18,20 @@ public class TEndConfExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public static Criteria newAndCreateCriteria() {
-        TEndConfExample example = new TEndConfExample();
-        return example.createCriteria();
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
     }
 
     public String getOrderByClause() {
         return orderByClause;
     }
 
-    public void setOrderByClause(String orderByClause) {
-        this.orderByClause = orderByClause;
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
     }
 
     public boolean isDistinct() {
         return distinct;
-    }
-
-    public void setDistinct(boolean distinct) {
-        this.distinct = distinct;
     }
 
     public List<Criteria> getOredCriteria() {
@@ -58,7 +53,7 @@ public class TEndConfExample {
         return this;
     }
 
-    public TEndConfExample orderBy(String... orderByClauses) {
+    public TEndConfExample orderBy(String ... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -91,20 +86,20 @@ public class TEndConfExample {
         offset = null;
     }
 
-    public Integer getOffset() {
-        return this.offset;
-    }
-
     public void setOffset(Integer offset) {
         this.offset = offset;
     }
 
-    public Integer getRows() {
-        return this.rows;
+    public Integer getOffset() {
+        return this.offset;
     }
 
     public void setRows(Integer rows) {
         this.rows = rows;
+    }
+
+    public Integer getRows() {
+        return this.rows;
     }
 
     public TEndConfExample limit(Integer rows) {
@@ -124,6 +119,11 @@ public class TEndConfExample {
         return this;
     }
 
+    public static Criteria newAndCreateCriteria() {
+        TEndConfExample example = new TEndConfExample();
+        return example.createCriteria();
+    }
+
     public TEndConfExample when(boolean condition, IExampleWhen then) {
         if (condition) {
             then.example(this);
@@ -138,14 +138,6 @@ public class TEndConfExample {
             otherwise.example(this);
         }
         return this;
-    }
-
-    public interface ICriteriaWhen {
-        void criteria(Criteria criteria);
-    }
-
-    public interface IExampleWhen {
-        void example(com.example.demo.model.TEndConfExample example);
     }
 
     protected abstract static class GeneratedCriteria {
@@ -561,7 +553,7 @@ public class TEndConfExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private final TEndConfExample example;
+        private TEndConfExample example;
 
         protected Criteria(TEndConfExample example) {
             super();
@@ -603,7 +595,7 @@ public class TEndConfExample {
     }
 
     public static class Criterion {
-        private final String condition;
+        private String condition;
 
         private Object value;
 
@@ -617,7 +609,39 @@ public class TEndConfExample {
 
         private boolean listValue;
 
-        private final String typeHandler;
+        private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
 
         protected Criterion(String condition) {
             super();
@@ -654,37 +678,13 @@ public class TEndConfExample {
         protected Criterion(String condition, Object value, Object secondValue) {
             this(condition, value, secondValue, null);
         }
+    }
 
-        public String getCondition() {
-            return condition;
-        }
+    public interface ICriteriaWhen {
+        void criteria(Criteria criteria);
+    }
 
-        public Object getValue() {
-            return value;
-        }
-
-        public Object getSecondValue() {
-            return secondValue;
-        }
-
-        public boolean isNoValue() {
-            return noValue;
-        }
-
-        public boolean isSingleValue() {
-            return singleValue;
-        }
-
-        public boolean isBetweenValue() {
-            return betweenValue;
-        }
-
-        public boolean isListValue() {
-            return listValue;
-        }
-
-        public String getTypeHandler() {
-            return typeHandler;
-        }
+    public interface IExampleWhen {
+        void example(com.example.demo.model.TEndConfExample example);
     }
 }

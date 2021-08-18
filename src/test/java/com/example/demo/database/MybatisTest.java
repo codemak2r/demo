@@ -53,7 +53,6 @@ class MybatisTest {
         tEndCase.setId(1L);
         tEndCase.setName("baidu");
         tEndCase.setDesc("测试");
-        tEndCase.setCreator("john.doe");
         tEndCase.setOwner("jack");
         tEndCase.setCreateTime(new Date());
         tEndCaseMapper.insert(tEndCase);

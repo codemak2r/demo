@@ -1,18 +1,21 @@
 package com.example.demo.model;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import lombok.Data;
 
 @Data
 public class TEndConf implements Serializable {
-    private static final long serialVersionUID = 1L;
     private Long id;
+
     private Integer browser;
+
     private String testUrl;
+
     private Long tCaseId;
+
+    private static final long serialVersionUID = 1L;
 
     public enum Column {
         id("id", "id", "BIGINT", false),
@@ -32,25 +35,6 @@ public class TEndConf implements Serializable {
 
         private final String jdbcType;
 
-        Column(String column, String javaProperty, String jdbcType, boolean isColumnNameDelimited) {
-            this.column = column;
-            this.javaProperty = javaProperty;
-            this.jdbcType = jdbcType;
-            this.isColumnNameDelimited = isColumnNameDelimited;
-        }
-
-        public static Column[] excludes(Column... excludes) {
-            ArrayList<Column> columns = new ArrayList<>(Arrays.asList(Column.values()));
-            if (excludes != null && excludes.length > 0) {
-                columns.removeAll(new ArrayList<>(Arrays.asList(excludes)));
-            }
-            return columns.toArray(new Column[]{});
-        }
-
-        public static Column[] all() {
-            return Column.values();
-        }
-
         public String value() {
             return this.column;
         }
@@ -67,12 +51,31 @@ public class TEndConf implements Serializable {
             return this.jdbcType;
         }
 
+        Column(String column, String javaProperty, String jdbcType, boolean isColumnNameDelimited) {
+            this.column = column;
+            this.javaProperty = javaProperty;
+            this.jdbcType = jdbcType;
+            this.isColumnNameDelimited = isColumnNameDelimited;
+        }
+
         public String desc() {
             return this.getEscapedColumnName() + " DESC";
         }
 
         public String asc() {
             return this.getEscapedColumnName() + " ASC";
+        }
+
+        public static Column[] excludes(Column ... excludes) {
+            ArrayList<Column> columns = new ArrayList<>(Arrays.asList(Column.values()));
+            if (excludes != null && excludes.length > 0) {
+                columns.removeAll(new ArrayList<>(Arrays.asList(excludes)));
+            }
+            return columns.toArray(new Column[]{});
+        }
+
+        public static Column[] all() {
+            return Column.values();
         }
 
         public String getEscapedColumnName() {

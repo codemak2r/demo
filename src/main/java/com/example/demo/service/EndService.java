@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.common.caches.DetailEndCase;
 import com.example.demo.dto.EndConfParam;
 import com.example.demo.dto.EndParams;
 import com.example.demo.dto.EndStepsParams;
@@ -9,6 +10,8 @@ import com.example.demo.mappers.TEndStepsMapper;
 import com.example.demo.model.*;
 import com.example.demo.utils.SeleniumUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,9 +36,20 @@ public class EndService {
     @Resource
     TEndConfMapper tEndConfMapper;
 
+    @Cacheable(cacheNames = "cases")
     public List<TEndCase> queryAllCases() {
         List<TEndCase> tEndCases = tEndCaseMapper.selectByExample(null);
         return tEndCases;
+    }
+
+    @Cacheable(cacheNames = "detailEndCase")
+    public TEndCase getCaseById(long caseId) {
+        return null;
+    }
+
+    @CachePut(cacheNames = "detailEndCase")
+    public TEndCase updateCase(long caseId) {
+        return null;
     }
 
     /**
@@ -68,7 +82,9 @@ public class EndService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void createCase(EndParams endParams) {
+    @CachePut(cacheNames = "detailEndCase")
+    public DetailEndCase createCase(EndParams endParams) {
+        DetailEndCase detailEndCase = new DetailEndCase();
 
         String name = endParams.getName();
         String desc = endParams.getDesc();
@@ -106,6 +122,11 @@ public class EndService {
             tEndStepsList.add(tEndSteps);
         }
         tEndStepsMapper.batchInsert(tEndStepsList);
+
+        detailEndCase.setTEndCase(tEndCase);
+        detailEndCase.setTEndConf(tEndConf);
+        detailEndCase.setTEndSteps(tEndStepsList);
+        return detailEndCase;
     }
 
     @Transactional(rollbackFor = Exception.class)

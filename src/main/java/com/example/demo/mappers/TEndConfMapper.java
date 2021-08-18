@@ -2,9 +2,8 @@ package com.example.demo.mappers;
 
 import com.example.demo.model.TEndConf;
 import com.example.demo.model.TEndConfExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TEndConfMapper {
     long countByExample(TEndConfExample example);
@@ -33,5 +32,5 @@ public interface TEndConfMapper {
 
     int batchInsert(@Param("list") List<TEndConf> list);
 
-    int batchInsertSelective(@Param("list") List<TEndConf> list, @Param("selective") TEndConf.Column... selective);
+    int batchInsertSelective(@Param("list") List<TEndConf> list, @Param("selective") TEndConf.Column ... selective);
 }

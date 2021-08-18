@@ -19,25 +19,20 @@ public class TEndCaseExample {
         oredCriteria = new ArrayList<Criteria>();
     }
 
-    public static Criteria newAndCreateCriteria() {
-        TEndCaseExample example = new TEndCaseExample();
-        return example.createCriteria();
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
     }
 
     public String getOrderByClause() {
         return orderByClause;
     }
 
-    public void setOrderByClause(String orderByClause) {
-        this.orderByClause = orderByClause;
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
     }
 
     public boolean isDistinct() {
         return distinct;
-    }
-
-    public void setDistinct(boolean distinct) {
-        this.distinct = distinct;
     }
 
     public List<Criteria> getOredCriteria() {
@@ -59,7 +54,7 @@ public class TEndCaseExample {
         return this;
     }
 
-    public TEndCaseExample orderBy(String... orderByClauses) {
+    public TEndCaseExample orderBy(String ... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -92,20 +87,20 @@ public class TEndCaseExample {
         offset = null;
     }
 
-    public Integer getOffset() {
-        return this.offset;
-    }
-
     public void setOffset(Integer offset) {
         this.offset = offset;
     }
 
-    public Integer getRows() {
-        return this.rows;
+    public Integer getOffset() {
+        return this.offset;
     }
 
     public void setRows(Integer rows) {
         this.rows = rows;
+    }
+
+    public Integer getRows() {
+        return this.rows;
     }
 
     public TEndCaseExample limit(Integer rows) {
@@ -125,6 +120,11 @@ public class TEndCaseExample {
         return this;
     }
 
+    public static Criteria newAndCreateCriteria() {
+        TEndCaseExample example = new TEndCaseExample();
+        return example.createCriteria();
+    }
+
     public TEndCaseExample when(boolean condition, IExampleWhen then) {
         if (condition) {
             then.example(this);
@@ -139,14 +139,6 @@ public class TEndCaseExample {
             otherwise.example(this);
         }
         return this;
-    }
-
-    public interface ICriteriaWhen {
-        void criteria(Criteria criteria);
-    }
-
-    public interface IExampleWhen {
-        void example(com.example.demo.model.TEndCaseExample example);
     }
 
     protected abstract static class GeneratedCriteria {
@@ -760,106 +752,6 @@ public class TEndCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreatorIsNull() {
-            addCriterion("creator is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIsNotNull() {
-            addCriterion("creator is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorEqualTo(String value) {
-            addCriterion("creator =", value, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("creator = ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorNotEqualTo(String value) {
-            addCriterion("creator <>", value, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorNotEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("creator <> ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorGreaterThan(String value) {
-            addCriterion("creator >", value, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorGreaterThanColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("creator > ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorGreaterThanOrEqualTo(String value) {
-            addCriterion("creator >=", value, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorGreaterThanOrEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("creator >= ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorLessThan(String value) {
-            addCriterion("creator <", value, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorLessThanColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("creator < ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorLessThanOrEqualTo(String value) {
-            addCriterion("creator <=", value, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorLessThanOrEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("creator <= ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorLike(String value) {
-            addCriterion("creator like", value, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorNotLike(String value) {
-            addCriterion("creator not like", value, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorIn(List<String> values) {
-            addCriterion("creator in", values, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorNotIn(List<String> values) {
-            addCriterion("creator not in", values, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorBetween(String value1, String value2) {
-            addCriterion("creator between", value1, value2, "creator");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatorNotBetween(String value1, String value2) {
-            addCriterion("creator not between", value1, value2, "creator");
-            return (Criteria) this;
-        }
-
         public Criteria andModifierIsNull() {
             addCriterion("modifier is null");
             return (Criteria) this;
@@ -1142,7 +1034,7 @@ public class TEndCaseExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private final TEndCaseExample example;
+        private TEndCaseExample example;
 
         protected Criteria(TEndCaseExample example) {
             super();
@@ -1184,7 +1076,7 @@ public class TEndCaseExample {
     }
 
     public static class Criterion {
-        private final String condition;
+        private String condition;
 
         private Object value;
 
@@ -1198,7 +1090,39 @@ public class TEndCaseExample {
 
         private boolean listValue;
 
-        private final String typeHandler;
+        private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
 
         protected Criterion(String condition) {
             super();
@@ -1235,37 +1159,13 @@ public class TEndCaseExample {
         protected Criterion(String condition, Object value, Object secondValue) {
             this(condition, value, secondValue, null);
         }
+    }
 
-        public String getCondition() {
-            return condition;
-        }
+    public interface ICriteriaWhen {
+        void criteria(Criteria criteria);
+    }
 
-        public Object getValue() {
-            return value;
-        }
-
-        public Object getSecondValue() {
-            return secondValue;
-        }
-
-        public boolean isNoValue() {
-            return noValue;
-        }
-
-        public boolean isSingleValue() {
-            return singleValue;
-        }
-
-        public boolean isBetweenValue() {
-            return betweenValue;
-        }
-
-        public boolean isListValue() {
-            return listValue;
-        }
-
-        public String getTypeHandler() {
-            return typeHandler;
-        }
+    public interface IExampleWhen {
+        void example(com.example.demo.model.TEndCaseExample example);
     }
 }

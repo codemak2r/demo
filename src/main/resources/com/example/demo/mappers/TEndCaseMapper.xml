@@ -8,7 +8,6 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="result" jdbcType="INTEGER" property="result" />
     <result column="owner" jdbcType="VARCHAR" property="owner" />
-    <result column="creator" jdbcType="VARCHAR" property="creator" />
     <result column="modifier" jdbcType="VARCHAR" property="modifier" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
@@ -72,8 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, `desc`, `status`, `result`, `owner`, creator, modifier, create_time, 
-    modify_time
+    id, `name`, `desc`, `status`, `result`, `owner`, modifier, create_time, modify_time
   </sql>
   <select id="selectByExample" parameterType="com.example.demo.model.TEndCaseExample" resultMap="BaseResultMap">
     select
@@ -118,13 +116,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into t_end_case (`name`, `desc`, `status`, 
-      `result`, `owner`, creator, 
-      modifier, create_time, modify_time
-      )
+      `result`, `owner`, modifier, 
+      create_time, modify_time)
     values (#{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{result,jdbcType=INTEGER}, #{owner,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
-      #{modifier,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
-      )
+      #{result,jdbcType=INTEGER}, #{owner,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.TEndCase">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -146,9 +142,6 @@
       </if>
       <if test="owner != null">
         `owner`,
-      </if>
-      <if test="creator != null">
-        creator,
       </if>
       <if test="modifier != null">
         modifier,
@@ -175,9 +168,6 @@
       </if>
       <if test="owner != null">
         #{owner,jdbcType=VARCHAR},
-      </if>
-      <if test="creator != null">
-        #{creator,jdbcType=VARCHAR},
       </if>
       <if test="modifier != null">
         #{modifier,jdbcType=VARCHAR},
@@ -217,9 +207,6 @@
       <if test="record.owner != null">
         `owner` = #{record.owner,jdbcType=VARCHAR},
       </if>
-      <if test="record.creator != null">
-        creator = #{record.creator,jdbcType=VARCHAR},
-      </if>
       <if test="record.modifier != null">
         modifier = #{record.modifier,jdbcType=VARCHAR},
       </if>
@@ -242,7 +229,6 @@
       `status` = #{record.status,jdbcType=INTEGER},
       `result` = #{record.result,jdbcType=INTEGER},
       `owner` = #{record.owner,jdbcType=VARCHAR},
-      creator = #{record.creator,jdbcType=VARCHAR},
       modifier = #{record.modifier,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
@@ -268,9 +254,6 @@
       <if test="owner != null">
         `owner` = #{owner,jdbcType=VARCHAR},
       </if>
-      <if test="creator != null">
-        creator = #{creator,jdbcType=VARCHAR},
-      </if>
       <if test="modifier != null">
         modifier = #{modifier,jdbcType=VARCHAR},
       </if>
@@ -290,7 +273,6 @@
       `status` = #{status,jdbcType=INTEGER},
       `result` = #{result,jdbcType=INTEGER},
       `owner` = #{owner,jdbcType=VARCHAR},
-      creator = #{creator,jdbcType=VARCHAR},
       modifier = #{modifier,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
@@ -310,14 +292,12 @@
   </select>
   <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
     insert into t_end_case
-    (`name`, `desc`, `status`, `result`, `owner`, creator, modifier, create_time, modify_time
-      )
+    (`name`, `desc`, `status`, `result`, `owner`, modifier, create_time, modify_time)
     values
     <foreach collection="list" item="item" separator=",">
       (#{item.name,jdbcType=VARCHAR}, #{item.desc,jdbcType=VARCHAR}, #{item.status,jdbcType=INTEGER}, 
-        #{item.result,jdbcType=INTEGER}, #{item.owner,jdbcType=VARCHAR}, #{item.creator,jdbcType=VARCHAR}, 
-        #{item.modifier,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP}
-        )
+        #{item.result,jdbcType=INTEGER}, #{item.owner,jdbcType=VARCHAR}, #{item.modifier,jdbcType=VARCHAR}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
   <insert id="batchInsertSelective" keyColumn="id" keyProperty="list.id" parameterType="map" useGeneratedKeys="true">
@@ -344,9 +324,6 @@
         </if>
         <if test="'owner'.toString() == column.value">
           #{item.owner,jdbcType=VARCHAR}
-        </if>
-        <if test="'creator'.toString() == column.value">
-          #{item.creator,jdbcType=VARCHAR}
         </if>
         <if test="'modifier'.toString() == column.value">
           #{item.modifier,jdbcType=VARCHAR}

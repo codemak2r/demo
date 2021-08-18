@@ -1,25 +1,32 @@
 package com.example.demo.model;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import lombok.Data;
 
 @Data
 public class TEndCase implements Serializable {
-    private static final long serialVersionUID = 1L;
     private Long id;
+
     private String name;
+
     private String desc;
+
     private Integer status;
+
     private Integer result;
+
     private String owner;
-    private String creator;
+
     private String modifier;
+
     private Date createTime;
+
     private Date modifyTime;
+
+    private static final long serialVersionUID = 1L;
 
     public enum Column {
         id("id", "id", "BIGINT", false),
@@ -28,7 +35,6 @@ public class TEndCase implements Serializable {
         status("status", "status", "INTEGER", true),
         result("result", "result", "INTEGER", true),
         owner("owner", "owner", "VARCHAR", true),
-        creator("creator", "creator", "VARCHAR", false),
         modifier("modifier", "modifier", "VARCHAR", false),
         createTime("create_time", "createTime", "TIMESTAMP", false),
         modifyTime("modify_time", "modifyTime", "TIMESTAMP", false);
@@ -44,25 +50,6 @@ public class TEndCase implements Serializable {
         private final String javaProperty;
 
         private final String jdbcType;
-
-        Column(String column, String javaProperty, String jdbcType, boolean isColumnNameDelimited) {
-            this.column = column;
-            this.javaProperty = javaProperty;
-            this.jdbcType = jdbcType;
-            this.isColumnNameDelimited = isColumnNameDelimited;
-        }
-
-        public static Column[] excludes(Column... excludes) {
-            ArrayList<Column> columns = new ArrayList<>(Arrays.asList(Column.values()));
-            if (excludes != null && excludes.length > 0) {
-                columns.removeAll(new ArrayList<>(Arrays.asList(excludes)));
-            }
-            return columns.toArray(new Column[]{});
-        }
-
-        public static Column[] all() {
-            return Column.values();
-        }
 
         public String value() {
             return this.column;
@@ -80,12 +67,31 @@ public class TEndCase implements Serializable {
             return this.jdbcType;
         }
 
+        Column(String column, String javaProperty, String jdbcType, boolean isColumnNameDelimited) {
+            this.column = column;
+            this.javaProperty = javaProperty;
+            this.jdbcType = jdbcType;
+            this.isColumnNameDelimited = isColumnNameDelimited;
+        }
+
         public String desc() {
             return this.getEscapedColumnName() + " DESC";
         }
 
         public String asc() {
             return this.getEscapedColumnName() + " ASC";
+        }
+
+        public static Column[] excludes(Column ... excludes) {
+            ArrayList<Column> columns = new ArrayList<>(Arrays.asList(Column.values()));
+            if (excludes != null && excludes.length > 0) {
+                columns.removeAll(new ArrayList<>(Arrays.asList(excludes)));
+            }
+            return columns.toArray(new Column[]{});
+        }
+
+        public static Column[] all() {
+            return Column.values();
         }
 
         public String getEscapedColumnName() {
