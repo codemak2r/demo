@@ -3,47 +3,22 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import lombok.Data;
 
 @Data
-public class TEndCase implements Serializable {
+public class TAfterExecCase implements Serializable {
     private Long id;
 
-    private String name;
+    private Long afterCaseId;
 
-    private String desc;
-
-    private Integer status;
-
-    private Integer result;
-
-    private String owner;
-
-    private String modifier;
-
-    private Date createdTime;
-
-    private Date modifiedTime;
-
-    private Integer isBefore;
-
-    private Integer isAfter;
+    private Long execCaseId;
 
     private static final long serialVersionUID = 1L;
 
     public enum Column {
         id("id", "id", "BIGINT", false),
-        name("name", "name", "VARCHAR", true),
-        desc("desc", "desc", "VARCHAR", true),
-        status("status", "status", "INTEGER", true),
-        result("result", "result", "INTEGER", true),
-        owner("owner", "owner", "VARCHAR", true),
-        modifier("modifier", "modifier", "VARCHAR", false),
-        createdTime("created_time", "createdTime", "TIMESTAMP", false),
-        modifiedTime("modified_time", "modifiedTime", "TIMESTAMP", false),
-        isBefore("is_before", "isBefore", "INTEGER", false),
-        isAfter("is_after", "isAfter", "INTEGER", false);
+        afterCaseId("after_case_id", "afterCaseId", "BIGINT", false),
+        execCaseId("exec_case_id", "execCaseId", "BIGINT", false);
 
         private static final String BEGINNING_DELIMITER = "`";
 

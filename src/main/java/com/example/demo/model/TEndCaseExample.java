@@ -852,183 +852,363 @@ public class TEndCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNull() {
-            addCriterion("create_time is null");
+        public Criteria andCreatedTimeIsNull() {
+            addCriterion("created_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNotNull() {
-            addCriterion("create_time is not null");
+        public Criteria andCreatedTimeIsNotNull() {
+            addCriterion("created_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
-            addCriterion("create_time =", value, "createTime");
+        public Criteria andCreatedTimeEqualTo(Date value) {
+            addCriterion("created_time =", value, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("create_time = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andCreatedTimeEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("created_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
-            addCriterion("create_time <>", value, "createTime");
+        public Criteria andCreatedTimeNotEqualTo(Date value) {
+            addCriterion("created_time <>", value, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("create_time <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andCreatedTimeNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("created_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
-            addCriterion("create_time >", value, "createTime");
+        public Criteria andCreatedTimeGreaterThan(Date value) {
+            addCriterion("created_time >", value, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("create_time > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andCreatedTimeGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("created_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("create_time >=", value, "createTime");
+        public Criteria andCreatedTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("created_time >=", value, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("create_time >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andCreatedTimeGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("created_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
-            addCriterion("create_time <", value, "createTime");
+        public Criteria andCreatedTimeLessThan(Date value) {
+            addCriterion("created_time <", value, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("create_time < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andCreatedTimeLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("created_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("create_time <=", value, "createTime");
+        public Criteria andCreatedTimeLessThanOrEqualTo(Date value) {
+            addCriterion("created_time <=", value, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("create_time <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andCreatedTimeLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("created_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
-            addCriterion("create_time in", values, "createTime");
+        public Criteria andCreatedTimeIn(List<Date> values) {
+            addCriterion("created_time in", values, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
-            addCriterion("create_time not in", values, "createTime");
+        public Criteria andCreatedTimeNotIn(List<Date> values) {
+            addCriterion("created_time not in", values, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
-            addCriterion("create_time between", value1, value2, "createTime");
+        public Criteria andCreatedTimeBetween(Date value1, Date value2) {
+            addCriterion("created_time between", value1, value2, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("create_time not between", value1, value2, "createTime");
+        public Criteria andCreatedTimeNotBetween(Date value1, Date value2) {
+            addCriterion("created_time not between", value1, value2, "createdTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeIsNull() {
-            addCriterion("modify_time is null");
+        public Criteria andModifiedTimeIsNull() {
+            addCriterion("modified_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeIsNotNull() {
-            addCriterion("modify_time is not null");
+        public Criteria andModifiedTimeIsNotNull() {
+            addCriterion("modified_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeEqualTo(Date value) {
-            addCriterion("modify_time =", value, "modifyTime");
+        public Criteria andModifiedTimeEqualTo(Date value) {
+            addCriterion("modified_time =", value, "modifiedTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("modify_time = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andModifiedTimeEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modified_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeNotEqualTo(Date value) {
-            addCriterion("modify_time <>", value, "modifyTime");
+        public Criteria andModifiedTimeNotEqualTo(Date value) {
+            addCriterion("modified_time <>", value, "modifiedTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeNotEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("modify_time <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andModifiedTimeNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modified_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeGreaterThan(Date value) {
-            addCriterion("modify_time >", value, "modifyTime");
+        public Criteria andModifiedTimeGreaterThan(Date value) {
+            addCriterion("modified_time >", value, "modifiedTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeGreaterThanColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("modify_time > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andModifiedTimeGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modified_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("modify_time >=", value, "modifyTime");
+        public Criteria andModifiedTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("modified_time >=", value, "modifiedTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeGreaterThanOrEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("modify_time >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andModifiedTimeGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modified_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeLessThan(Date value) {
-            addCriterion("modify_time <", value, "modifyTime");
+        public Criteria andModifiedTimeLessThan(Date value) {
+            addCriterion("modified_time <", value, "modifiedTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeLessThanColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("modify_time < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andModifiedTimeLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modified_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeLessThanOrEqualTo(Date value) {
-            addCriterion("modify_time <=", value, "modifyTime");
+        public Criteria andModifiedTimeLessThanOrEqualTo(Date value) {
+            addCriterion("modified_time <=", value, "modifiedTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeLessThanOrEqualToColumn(TEndCase.Column column) {
-            addCriterion(new StringBuilder("modify_time <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andModifiedTimeLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("modified_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeIn(List<Date> values) {
-            addCriterion("modify_time in", values, "modifyTime");
+        public Criteria andModifiedTimeIn(List<Date> values) {
+            addCriterion("modified_time in", values, "modifiedTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeNotIn(List<Date> values) {
-            addCriterion("modify_time not in", values, "modifyTime");
+        public Criteria andModifiedTimeNotIn(List<Date> values) {
+            addCriterion("modified_time not in", values, "modifiedTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeBetween(Date value1, Date value2) {
-            addCriterion("modify_time between", value1, value2, "modifyTime");
+        public Criteria andModifiedTimeBetween(Date value1, Date value2) {
+            addCriterion("modified_time between", value1, value2, "modifiedTime");
             return (Criteria) this;
         }
 
-        public Criteria andModifyTimeNotBetween(Date value1, Date value2) {
-            addCriterion("modify_time not between", value1, value2, "modifyTime");
+        public Criteria andModifiedTimeNotBetween(Date value1, Date value2) {
+            addCriterion("modified_time not between", value1, value2, "modifiedTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeIsNull() {
+            addCriterion("is_before is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeIsNotNull() {
+            addCriterion("is_before is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeEqualTo(Integer value) {
+            addCriterion("is_before =", value, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_before = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeNotEqualTo(Integer value) {
+            addCriterion("is_before <>", value, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_before <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeGreaterThan(Integer value) {
+            addCriterion("is_before >", value, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_before > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_before >=", value, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_before >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeLessThan(Integer value) {
+            addCriterion("is_before <", value, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_before < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeLessThanOrEqualTo(Integer value) {
+            addCriterion("is_before <=", value, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_before <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeIn(List<Integer> values) {
+            addCriterion("is_before in", values, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeNotIn(List<Integer> values) {
+            addCriterion("is_before not in", values, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeBetween(Integer value1, Integer value2) {
+            addCriterion("is_before between", value1, value2, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsBeforeNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_before not between", value1, value2, "isBefore");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterIsNull() {
+            addCriterion("is_after is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterIsNotNull() {
+            addCriterion("is_after is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterEqualTo(Integer value) {
+            addCriterion("is_after =", value, "isAfter");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_after = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterNotEqualTo(Integer value) {
+            addCriterion("is_after <>", value, "isAfter");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterNotEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_after <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterGreaterThan(Integer value) {
+            addCriterion("is_after >", value, "isAfter");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterGreaterThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_after > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_after >=", value, "isAfter");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterGreaterThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_after >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterLessThan(Integer value) {
+            addCriterion("is_after <", value, "isAfter");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterLessThanColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_after < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterLessThanOrEqualTo(Integer value) {
+            addCriterion("is_after <=", value, "isAfter");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterLessThanOrEqualToColumn(TEndCase.Column column) {
+            addCriterion(new StringBuilder("is_after <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterIn(List<Integer> values) {
+            addCriterion("is_after in", values, "isAfter");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterNotIn(List<Integer> values) {
+            addCriterion("is_after not in", values, "isAfter");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterBetween(Integer value1, Integer value2) {
+            addCriterion("is_after between", value1, value2, "isAfter");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAfterNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_after not between", value1, value2, "isAfter");
             return (Criteria) this;
         }
     }

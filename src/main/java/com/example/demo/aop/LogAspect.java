@@ -1,6 +1,5 @@
 package com.example.demo.aop;
 
-import com.example.demo.dto.TaskDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -25,8 +24,7 @@ public class LogAspect {
 
     @Before("pointCut()")
     public void before(JoinPoint joinPoint) {
-        TaskDTO taskDTO = (TaskDTO) joinPoint.getArgs()[0];
-        MDC.put("taskId", taskDTO.getTaskId());
+
     }
 
     @After("pointCut()")

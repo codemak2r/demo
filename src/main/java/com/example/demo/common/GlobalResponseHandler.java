@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 public class GlobalResponseHandler implements ResponseBodyAdvice {
     @Override
     public boolean supports(MethodParameter methodParameter, Class aClass) {
-        if (methodParameter.getDeclaringClass().isAnnotationPresent(IgnoreAdvice.class)){
+        if (methodParameter.getDeclaringClass().isAnnotationPresent(IgnoreAdvice.class)) {
             return false;
         }
 
@@ -27,7 +27,7 @@ public class GlobalResponseHandler implements ResponseBodyAdvice {
 
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-        if(o == null) {
+        if (o == null) {
             return GlobalResult.success();
         }
         if (o instanceof GlobalResult) {

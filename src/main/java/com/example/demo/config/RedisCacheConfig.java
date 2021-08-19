@@ -18,7 +18,7 @@ import java.io.Serializable;
 @AutoConfigureAfter(RedisAutoConfiguration.class)
 public class RedisCacheConfig {
     @Bean
-    public RedisTemplate<String, Serializable> redisCacheTemplate(LettuceConnectionFactory redisConnectFactory){
+    public RedisTemplate<String, Serializable> redisCacheTemplate(LettuceConnectionFactory redisConnectFactory) {
         RedisTemplate<String, Serializable> template = new RedisTemplate<>();
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(new GenericJackson2JsonRedisSerializer());

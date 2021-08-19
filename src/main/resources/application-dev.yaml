@@ -115,5 +115,5 @@ flyway:
   # 但flyway Clean 命令会依次在这些schema下都执行一遍. 所以 确保生产 spring.flyway.clean-disabled 为 true
   # 表名
   schemas: qautils
-  # 执行迁移时是否自动调用验证   当你的 版本不符合逻辑 比如 你先执行了 DML 而没有 对应的DDL 会抛出异常
-  validate-on-migrate: false
+  # 执行迁移时是否自动调用验证   当你的版本不符合逻辑 比如 你先执行了 DML 而没有 对应的DDL 会抛出异常
+  validate-on-migrate: true

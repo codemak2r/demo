@@ -361,6 +361,276 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
+        public Criteria andWindowSizeWidthIsNull() {
+            addCriterion("window_size_width is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthIsNotNull() {
+            addCriterion("window_size_width is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthEqualTo(Integer value) {
+            addCriterion("window_size_width =", value, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_width = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthNotEqualTo(Integer value) {
+            addCriterion("window_size_width <>", value, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthNotEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_width <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthGreaterThan(Integer value) {
+            addCriterion("window_size_width >", value, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthGreaterThanColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_width > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthGreaterThanOrEqualTo(Integer value) {
+            addCriterion("window_size_width >=", value, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthGreaterThanOrEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_width >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthLessThan(Integer value) {
+            addCriterion("window_size_width <", value, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthLessThanColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_width < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthLessThanOrEqualTo(Integer value) {
+            addCriterion("window_size_width <=", value, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthLessThanOrEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_width <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthIn(List<Integer> values) {
+            addCriterion("window_size_width in", values, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthNotIn(List<Integer> values) {
+            addCriterion("window_size_width not in", values, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthBetween(Integer value1, Integer value2) {
+            addCriterion("window_size_width between", value1, value2, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeWidthNotBetween(Integer value1, Integer value2) {
+            addCriterion("window_size_width not between", value1, value2, "windowSizeWidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightIsNull() {
+            addCriterion("window_size_height is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightIsNotNull() {
+            addCriterion("window_size_height is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightEqualTo(Integer value) {
+            addCriterion("window_size_height =", value, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_height = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightNotEqualTo(Integer value) {
+            addCriterion("window_size_height <>", value, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightNotEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_height <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightGreaterThan(Integer value) {
+            addCriterion("window_size_height >", value, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightGreaterThanColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_height > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightGreaterThanOrEqualTo(Integer value) {
+            addCriterion("window_size_height >=", value, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightGreaterThanOrEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_height >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightLessThan(Integer value) {
+            addCriterion("window_size_height <", value, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightLessThanColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_height < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightLessThanOrEqualTo(Integer value) {
+            addCriterion("window_size_height <=", value, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightLessThanOrEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("window_size_height <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightIn(List<Integer> values) {
+            addCriterion("window_size_height in", values, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightNotIn(List<Integer> values) {
+            addCriterion("window_size_height not in", values, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightBetween(Integer value1, Integer value2) {
+            addCriterion("window_size_height between", value1, value2, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andWindowSizeHeightNotBetween(Integer value1, Integer value2) {
+            addCriterion("window_size_height not between", value1, value2, "windowSizeHeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessIsNull() {
+            addCriterion("is_headless is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessIsNotNull() {
+            addCriterion("is_headless is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessEqualTo(Integer value) {
+            addCriterion("is_headless =", value, "isHeadless");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("is_headless = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessNotEqualTo(Integer value) {
+            addCriterion("is_headless <>", value, "isHeadless");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessNotEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("is_headless <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessGreaterThan(Integer value) {
+            addCriterion("is_headless >", value, "isHeadless");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessGreaterThanColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("is_headless > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_headless >=", value, "isHeadless");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessGreaterThanOrEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("is_headless >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessLessThan(Integer value) {
+            addCriterion("is_headless <", value, "isHeadless");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessLessThanColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("is_headless < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessLessThanOrEqualTo(Integer value) {
+            addCriterion("is_headless <=", value, "isHeadless");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessLessThanOrEqualToColumn(TEndConf.Column column) {
+            addCriterion(new StringBuilder("is_headless <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessIn(List<Integer> values) {
+            addCriterion("is_headless in", values, "isHeadless");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessNotIn(List<Integer> values) {
+            addCriterion("is_headless not in", values, "isHeadless");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessBetween(Integer value1, Integer value2) {
+            addCriterion("is_headless between", value1, value2, "isHeadless");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsHeadlessNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_headless not between", value1, value2, "isHeadless");
+            return (Criteria) this;
+        }
+
         public Criteria andTestUrlIsNull() {
             addCriterion("test_url is null");
             return (Criteria) this;

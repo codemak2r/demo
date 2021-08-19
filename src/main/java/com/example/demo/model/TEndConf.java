@@ -11,6 +11,12 @@ public class TEndConf implements Serializable {
 
     private Integer browser;
 
+    private Integer windowSizeWidth;
+
+    private Integer windowSizeHeight;
+
+    private Integer isHeadless;
+
     private String testUrl;
 
     private Long tCaseId;
@@ -20,6 +26,9 @@ public class TEndConf implements Serializable {
     public enum Column {
         id("id", "id", "BIGINT", false),
         browser("browser", "browser", "INTEGER", false),
+        windowSizeWidth("window_size_width", "windowSizeWidth", "INTEGER", false),
+        windowSizeHeight("window_size_height", "windowSizeHeight", "INTEGER", false),
+        isHeadless("is_headless", "isHeadless", "INTEGER", false),
         testUrl("test_url", "testUrl", "VARCHAR", false),
         tCaseId("t_case_id", "tCaseId", "BIGINT", false);
 

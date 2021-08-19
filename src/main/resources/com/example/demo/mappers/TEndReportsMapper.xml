@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mappers.TEndConfMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.model.TEndConf">
+<mapper namespace="com.example.demo.mappers.TEndReportsMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.TEndReports">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="browser" jdbcType="INTEGER" property="browser" />
-    <result column="window_size_width" jdbcType="INTEGER" property="windowSizeWidth" />
-    <result column="window_size_height" jdbcType="INTEGER" property="windowSizeHeight" />
-    <result column="is_headless" jdbcType="INTEGER" property="isHeadless" />
-    <result column="test_url" jdbcType="VARCHAR" property="testUrl" />
     <result column="t_case_id" jdbcType="BIGINT" property="tCaseId" />
+    <result column="result" jdbcType="INTEGER" property="result" />
+    <result column="screen" jdbcType="VARCHAR" property="screen" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, browser, window_size_width, window_size_height, is_headless, test_url, t_case_id
+    id, t_case_id, `result`, screen
   </sql>
-  <select id="selectByExample" parameterType="com.example.demo.model.TEndConfExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.model.TEndReportsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_end_conf
+    from t_end_reports
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -96,105 +93,76 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_end_conf
+    from t_end_reports
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_end_conf
+    delete from t_end_reports
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.demo.model.TEndConfExample">
-    delete from t_end_conf
+  <delete id="deleteByExample" parameterType="com.example.demo.model.TEndReportsExample">
+    delete from t_end_reports
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.demo.model.TEndConf">
-    insert into t_end_conf (id, browser, window_size_width, 
-      window_size_height, is_headless, test_url, 
-      t_case_id)
-    values (#{id,jdbcType=BIGINT}, #{browser,jdbcType=INTEGER}, #{windowSizeWidth,jdbcType=INTEGER}, 
-      #{windowSizeHeight,jdbcType=INTEGER}, #{isHeadless,jdbcType=INTEGER}, #{testUrl,jdbcType=VARCHAR}, 
-      #{tCaseId,jdbcType=BIGINT})
+  <insert id="insert" parameterType="com.example.demo.model.TEndReports">
+    insert into t_end_reports (id, t_case_id, `result`, 
+      screen)
+    values (#{id,jdbcType=BIGINT}, #{tCaseId,jdbcType=BIGINT}, #{result,jdbcType=INTEGER}, 
+      #{screen,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.model.TEndConf">
-    insert into t_end_conf
+  <insert id="insertSelective" parameterType="com.example.demo.model.TEndReports">
+    insert into t_end_reports
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="browser != null">
-        browser,
-      </if>
-      <if test="windowSizeWidth != null">
-        window_size_width,
-      </if>
-      <if test="windowSizeHeight != null">
-        window_size_height,
-      </if>
-      <if test="isHeadless != null">
-        is_headless,
-      </if>
-      <if test="testUrl != null">
-        test_url,
-      </if>
       <if test="tCaseId != null">
         t_case_id,
+      </if>
+      <if test="result != null">
+        `result`,
+      </if>
+      <if test="screen != null">
+        screen,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="browser != null">
-        #{browser,jdbcType=INTEGER},
-      </if>
-      <if test="windowSizeWidth != null">
-        #{windowSizeWidth,jdbcType=INTEGER},
-      </if>
-      <if test="windowSizeHeight != null">
-        #{windowSizeHeight,jdbcType=INTEGER},
-      </if>
-      <if test="isHeadless != null">
-        #{isHeadless,jdbcType=INTEGER},
-      </if>
-      <if test="testUrl != null">
-        #{testUrl,jdbcType=VARCHAR},
-      </if>
       <if test="tCaseId != null">
         #{tCaseId,jdbcType=BIGINT},
       </if>
+      <if test="result != null">
+        #{result,jdbcType=INTEGER},
+      </if>
+      <if test="screen != null">
+        #{screen,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.demo.model.TEndConfExample" resultType="java.lang.Long">
-    select count(*) from t_end_conf
+  <select id="countByExample" parameterType="com.example.demo.model.TEndReportsExample" resultType="java.lang.Long">
+    select count(*) from t_end_reports
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update t_end_conf
+    update t_end_reports
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.browser != null">
-        browser = #{record.browser,jdbcType=INTEGER},
-      </if>
-      <if test="record.windowSizeWidth != null">
-        window_size_width = #{record.windowSizeWidth,jdbcType=INTEGER},
-      </if>
-      <if test="record.windowSizeHeight != null">
-        window_size_height = #{record.windowSizeHeight,jdbcType=INTEGER},
-      </if>
-      <if test="record.isHeadless != null">
-        is_headless = #{record.isHeadless,jdbcType=INTEGER},
-      </if>
-      <if test="record.testUrl != null">
-        test_url = #{record.testUrl,jdbcType=VARCHAR},
-      </if>
       <if test="record.tCaseId != null">
         t_case_id = #{record.tCaseId,jdbcType=BIGINT},
+      </if>
+      <if test="record.result != null">
+        `result` = #{record.result,jdbcType=INTEGER},
+      </if>
+      <if test="record.screen != null">
+        screen = #{record.screen,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -202,56 +170,41 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update t_end_conf
+    update t_end_reports
     set id = #{record.id,jdbcType=BIGINT},
-      browser = #{record.browser,jdbcType=INTEGER},
-      window_size_width = #{record.windowSizeWidth,jdbcType=INTEGER},
-      window_size_height = #{record.windowSizeHeight,jdbcType=INTEGER},
-      is_headless = #{record.isHeadless,jdbcType=INTEGER},
-      test_url = #{record.testUrl,jdbcType=VARCHAR},
-      t_case_id = #{record.tCaseId,jdbcType=BIGINT}
+      t_case_id = #{record.tCaseId,jdbcType=BIGINT},
+      `result` = #{record.result,jdbcType=INTEGER},
+      screen = #{record.screen,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TEndConf">
-    update t_end_conf
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TEndReports">
+    update t_end_reports
     <set>
-      <if test="browser != null">
-        browser = #{browser,jdbcType=INTEGER},
-      </if>
-      <if test="windowSizeWidth != null">
-        window_size_width = #{windowSizeWidth,jdbcType=INTEGER},
-      </if>
-      <if test="windowSizeHeight != null">
-        window_size_height = #{windowSizeHeight,jdbcType=INTEGER},
-      </if>
-      <if test="isHeadless != null">
-        is_headless = #{isHeadless,jdbcType=INTEGER},
-      </if>
-      <if test="testUrl != null">
-        test_url = #{testUrl,jdbcType=VARCHAR},
-      </if>
       <if test="tCaseId != null">
         t_case_id = #{tCaseId,jdbcType=BIGINT},
+      </if>
+      <if test="result != null">
+        `result` = #{result,jdbcType=INTEGER},
+      </if>
+      <if test="screen != null">
+        screen = #{screen,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TEndConf">
-    update t_end_conf
-    set browser = #{browser,jdbcType=INTEGER},
-      window_size_width = #{windowSizeWidth,jdbcType=INTEGER},
-      window_size_height = #{windowSizeHeight,jdbcType=INTEGER},
-      is_headless = #{isHeadless,jdbcType=INTEGER},
-      test_url = #{testUrl,jdbcType=VARCHAR},
-      t_case_id = #{tCaseId,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TEndReports">
+    update t_end_reports
+    set t_case_id = #{tCaseId,jdbcType=BIGINT},
+      `result` = #{result,jdbcType=INTEGER},
+      screen = #{screen,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectOneByExample" parameterType="com.example.demo.model.TEndConfExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="com.example.demo.model.TEndReportsExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from t_end_conf
+    from t_end_reports
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -261,18 +214,16 @@
     limit 1
   </select>
   <insert id="batchInsert" parameterType="map">
-    insert into t_end_conf
-    (id, browser, window_size_width, window_size_height, is_headless, test_url, t_case_id
-      )
+    insert into t_end_reports
+    (id, t_case_id, `result`, screen)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.id,jdbcType=BIGINT}, #{item.browser,jdbcType=INTEGER}, #{item.windowSizeWidth,jdbcType=INTEGER}, 
-        #{item.windowSizeHeight,jdbcType=INTEGER}, #{item.isHeadless,jdbcType=INTEGER}, 
-        #{item.testUrl,jdbcType=VARCHAR}, #{item.tCaseId,jdbcType=BIGINT})
+      (#{item.id,jdbcType=BIGINT}, #{item.tCaseId,jdbcType=BIGINT}, #{item.result,jdbcType=INTEGER}, 
+        #{item.screen,jdbcType=VARCHAR})
     </foreach>
   </insert>
   <insert id="batchInsertSelective" parameterType="map">
-    insert into t_end_conf (
+    insert into t_end_reports (
     <foreach collection="selective" item="column" separator=",">
       ${column.escapedColumnName}
     </foreach>
@@ -284,23 +235,14 @@
         <if test="'id'.toString() == column.value">
           #{item.id,jdbcType=BIGINT}
         </if>
-        <if test="'browser'.toString() == column.value">
-          #{item.browser,jdbcType=INTEGER}
-        </if>
-        <if test="'window_size_width'.toString() == column.value">
-          #{item.windowSizeWidth,jdbcType=INTEGER}
-        </if>
-        <if test="'window_size_height'.toString() == column.value">
-          #{item.windowSizeHeight,jdbcType=INTEGER}
-        </if>
-        <if test="'is_headless'.toString() == column.value">
-          #{item.isHeadless,jdbcType=INTEGER}
-        </if>
-        <if test="'test_url'.toString() == column.value">
-          #{item.testUrl,jdbcType=VARCHAR}
-        </if>
         <if test="'t_case_id'.toString() == column.value">
           #{item.tCaseId,jdbcType=BIGINT}
+        </if>
+        <if test="'result'.toString() == column.value">
+          #{item.result,jdbcType=INTEGER}
+        </if>
+        <if test="'screen'.toString() == column.value">
+          #{item.screen,jdbcType=VARCHAR}
         </if>
       </foreach>
       )
