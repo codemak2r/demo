@@ -3,11 +3,16 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TEndSteps implements Serializable {
     private Long id;
+
+    private Long projectId;
 
     private Long tCaseId;
 
@@ -25,6 +30,7 @@ public class TEndSteps implements Serializable {
 
     public enum Column {
         id("id", "id", "BIGINT", false),
+        projectId("project_id", "projectId", "BIGINT", false),
         tCaseId("t_case_id", "tCaseId", "BIGINT", false),
         action("action", "action", "VARCHAR", true),
         elementType("element_type", "elementType", "VARCHAR", false),

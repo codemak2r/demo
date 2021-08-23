@@ -3,12 +3,18 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class TAfterExecCase implements Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class TAfterExecCases implements Serializable {
     private Long id;
 
+    private Long projectId;
+    @JsonProperty(value = "after")
     private Long afterCaseId;
 
     private Long execCaseId;
@@ -17,6 +23,7 @@ public class TAfterExecCase implements Serializable {
 
     public enum Column {
         id("id", "id", "BIGINT", false),
+        projectId("project_id", "projectId", "BIGINT", false),
         afterCaseId("after_case_id", "afterCaseId", "BIGINT", false),
         execCaseId("exec_case_id", "execCaseId", "BIGINT", false);
 

@@ -1,7 +1,7 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.TEndCase;
-import com.example.demo.model.TEndConf;
+import com.example.demo.model.TEndCases;
+import com.example.demo.model.TEndConfs;
 import com.example.demo.model.TEndSteps;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,12 +15,18 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TEndCaseDetails {
-    @JsonProperty(value = "case")
-    private TEndCase tEndCase;
+    @JsonProperty(value = "cases")
+    private TEndCases tEndCases;
 
-    @JsonProperty(value = "conf")
-    private TEndConf tEndConf;
+    @JsonProperty(value = "confs")
+    private TEndConfs tEndConfs;
 
     @JsonProperty(value = "steps")
     private List<TEndSteps> tEndSteps;
+
+    @JsonProperty(value = "before_scripts")
+    private List<Long> beforeCases;
+
+    @JsonProperty(value = "after_scripts")
+    private List<Long> afterCases;
 }

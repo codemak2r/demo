@@ -3,47 +3,40 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
-public class TEndCase implements Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class TEndConfs implements Serializable {
     private Long id;
 
-    private String name;
+    private Long projectId;
 
-    private String desc;
+    private Integer browser;
 
-    private Integer status;
+    private Integer windowSizeWidth;
 
-    private Integer result;
+    private Integer windowSizeHeight;
 
-    private String owner;
+    private Integer isHeadless;
 
-    private String modifier;
+    private String testUrl;
 
-    private Date createdTime;
-
-    private Date modifiedTime;
-
-    private Integer isBefore;
-
-    private Integer isAfter;
+    private Long tCaseId;
 
     private static final long serialVersionUID = 1L;
 
     public enum Column {
         id("id", "id", "BIGINT", false),
-        name("name", "name", "VARCHAR", true),
-        desc("desc", "desc", "VARCHAR", true),
-        status("status", "status", "INTEGER", true),
-        result("result", "result", "INTEGER", true),
-        owner("owner", "owner", "VARCHAR", true),
-        modifier("modifier", "modifier", "VARCHAR", false),
-        createdTime("created_time", "createdTime", "TIMESTAMP", false),
-        modifiedTime("modified_time", "modifiedTime", "TIMESTAMP", false),
-        isBefore("is_before", "isBefore", "INTEGER", false),
-        isAfter("is_after", "isAfter", "INTEGER", false);
+        projectId("project_id", "projectId", "BIGINT", false),
+        browser("browser", "browser", "INTEGER", false),
+        windowSizeWidth("window_size_width", "windowSizeWidth", "INTEGER", false),
+        windowSizeHeight("window_size_height", "windowSizeHeight", "INTEGER", false),
+        isHeadless("is_headless", "isHeadless", "INTEGER", false),
+        testUrl("test_url", "testUrl", "VARCHAR", false),
+        tCaseId("t_case_id", "tCaseId", "BIGINT", false);
 
         private static final String BEGINNING_DELIMITER = "`";
 

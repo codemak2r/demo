@@ -3,22 +3,35 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
-public class TBeforeExecCase implements Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class TEndProjects implements Serializable {
     private Long id;
 
-    private Long beforeCaseId;
+    private String name;
 
-    private Long execCaseId;
+    private String desc;
+
+    private String owner;
+
+    private Date createdTime;
+
+    private Date modifiedTime;
 
     private static final long serialVersionUID = 1L;
 
     public enum Column {
         id("id", "id", "BIGINT", false),
-        beforeCaseId("before_case_id", "beforeCaseId", "BIGINT", false),
-        execCaseId("exec_case_id", "execCaseId", "BIGINT", false);
+        name("name", "name", "VARCHAR", true),
+        desc("desc", "desc", "VARCHAR", true),
+        owner("owner", "owner", "VARCHAR", true),
+        createdTime("created_time", "createdTime", "TIMESTAMP", false),
+        modifiedTime("modified_time", "modifiedTime", "TIMESTAMP", false);
 
         private static final String BEGINNING_DELIMITER = "`";
 

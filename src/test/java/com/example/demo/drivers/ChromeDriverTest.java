@@ -20,7 +20,7 @@ public class ChromeDriverTest {
     @Test
     public void testDockerSelenium() throws MalformedURLException {
         ChromeOptions chromeOptions = new ChromeOptions();
-        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444"), chromeOptions);
+        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), chromeOptions);
         driver.get("https://www.baidu.com");
         driver.wait(3000);
 //        WebElement.class.getMethod("sendKeys", CharSequence[].class).invoke(driver.findElement(By.id("#kw")), "Hello");

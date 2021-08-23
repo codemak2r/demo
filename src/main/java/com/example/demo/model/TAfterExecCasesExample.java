@@ -3,7 +3,7 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TAfterExecCaseExample {
+public class TAfterExecCasesExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -14,7 +14,7 @@ public class TAfterExecCaseExample {
 
     protected Integer rows;
 
-    public TAfterExecCaseExample() {
+    public TAfterExecCasesExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -48,12 +48,12 @@ public class TAfterExecCaseExample {
         return criteria;
     }
 
-    public TAfterExecCaseExample orderBy(String orderByClause) {
+    public TAfterExecCasesExample orderBy(String orderByClause) {
         this.setOrderByClause(orderByClause);
         return this;
     }
 
-    public TAfterExecCaseExample orderBy(String ... orderByClauses) {
+    public TAfterExecCasesExample orderBy(String ... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -102,36 +102,36 @@ public class TAfterExecCaseExample {
         return this.rows;
     }
 
-    public TAfterExecCaseExample limit(Integer rows) {
+    public TAfterExecCasesExample limit(Integer rows) {
         this.rows = rows;
         return this;
     }
 
-    public TAfterExecCaseExample limit(Integer offset, Integer rows) {
+    public TAfterExecCasesExample limit(Integer offset, Integer rows) {
         this.offset = offset;
         this.rows = rows;
         return this;
     }
 
-    public TAfterExecCaseExample page(Integer page, Integer pageSize) {
+    public TAfterExecCasesExample page(Integer page, Integer pageSize) {
         this.offset = page * pageSize;
         this.rows = pageSize;
         return this;
     }
 
     public static Criteria newAndCreateCriteria() {
-        TAfterExecCaseExample example = new TAfterExecCaseExample();
+        TAfterExecCasesExample example = new TAfterExecCasesExample();
         return example.createCriteria();
     }
 
-    public TAfterExecCaseExample when(boolean condition, IExampleWhen then) {
+    public TAfterExecCasesExample when(boolean condition, IExampleWhen then) {
         if (condition) {
             then.example(this);
         }
         return this;
     }
 
-    public TAfterExecCaseExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
+    public TAfterExecCasesExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
         if (condition) {
             then.example(this);
         } else {
@@ -196,7 +196,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andIdEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -206,7 +206,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andIdNotEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -216,7 +216,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanColumn(TAfterExecCase.Column column) {
+        public Criteria andIdGreaterThanColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -226,7 +226,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andIdGreaterThanOrEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -236,7 +236,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanColumn(TAfterExecCase.Column column) {
+        public Criteria andIdLessThanColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -246,7 +246,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andIdLessThanOrEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -271,6 +271,96 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andProjectIdIsNull() {
+            addCriterion("project_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdIsNotNull() {
+            addCriterion("project_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdEqualTo(Long value) {
+            addCriterion("project_id =", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdEqualToColumn(TAfterExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotEqualTo(Long value) {
+            addCriterion("project_id <>", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotEqualToColumn(TAfterExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThan(Long value) {
+            addCriterion("project_id >", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanColumn(TAfterExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("project_id >=", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanOrEqualToColumn(TAfterExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThan(Long value) {
+            addCriterion("project_id <", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanColumn(TAfterExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanOrEqualTo(Long value) {
+            addCriterion("project_id <=", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanOrEqualToColumn(TAfterExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdIn(List<Long> values) {
+            addCriterion("project_id in", values, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotIn(List<Long> values) {
+            addCriterion("project_id not in", values, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdBetween(Long value1, Long value2) {
+            addCriterion("project_id between", value1, value2, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotBetween(Long value1, Long value2) {
+            addCriterion("project_id not between", value1, value2, "projectId");
+            return (Criteria) this;
+        }
+
         public Criteria andAfterCaseIdIsNull() {
             addCriterion("after_case_id is null");
             return (Criteria) this;
@@ -286,7 +376,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andAfterCaseIdEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andAfterCaseIdEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("after_case_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -296,7 +386,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andAfterCaseIdNotEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andAfterCaseIdNotEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("after_case_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -306,7 +396,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andAfterCaseIdGreaterThanColumn(TAfterExecCase.Column column) {
+        public Criteria andAfterCaseIdGreaterThanColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("after_case_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -316,7 +406,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andAfterCaseIdGreaterThanOrEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andAfterCaseIdGreaterThanOrEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("after_case_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -326,7 +416,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andAfterCaseIdLessThanColumn(TAfterExecCase.Column column) {
+        public Criteria andAfterCaseIdLessThanColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("after_case_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -336,7 +426,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andAfterCaseIdLessThanOrEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andAfterCaseIdLessThanOrEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("after_case_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -376,7 +466,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andExecCaseIdEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -386,7 +476,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdNotEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andExecCaseIdNotEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -396,7 +486,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdGreaterThanColumn(TAfterExecCase.Column column) {
+        public Criteria andExecCaseIdGreaterThanColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -406,7 +496,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdGreaterThanOrEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andExecCaseIdGreaterThanOrEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -416,7 +506,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdLessThanColumn(TAfterExecCase.Column column) {
+        public Criteria andExecCaseIdLessThanColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -426,7 +516,7 @@ public class TAfterExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdLessThanOrEqualToColumn(TAfterExecCase.Column column) {
+        public Criteria andExecCaseIdLessThanOrEqualToColumn(TAfterExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -453,14 +543,14 @@ public class TAfterExecCaseExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private TAfterExecCaseExample example;
+        private TAfterExecCasesExample example;
 
-        protected Criteria(TAfterExecCaseExample example) {
+        protected Criteria(TAfterExecCasesExample example) {
             super();
             this.example = example;
         }
 
-        public TAfterExecCaseExample example() {
+        public TAfterExecCasesExample example() {
             return this.example;
         }
 
@@ -585,6 +675,6 @@ public class TAfterExecCaseExample {
     }
 
     public interface IExampleWhen {
-        void example(com.example.demo.model.TAfterExecCaseExample example);
+        void example(com.example.demo.model.TAfterExecCasesExample example);
     }
 }

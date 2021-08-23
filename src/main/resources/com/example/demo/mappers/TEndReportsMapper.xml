@@ -3,6 +3,7 @@
 <mapper namespace="com.example.demo.mappers.TEndReportsMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.model.TEndReports">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="project_id" jdbcType="BIGINT" property="projectId" />
     <result column="t_case_id" jdbcType="BIGINT" property="tCaseId" />
     <result column="result" jdbcType="INTEGER" property="result" />
     <result column="screen" jdbcType="VARCHAR" property="screen" />
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, t_case_id, `result`, screen
+    id, project_id, t_case_id, `result`, screen
   </sql>
   <select id="selectByExample" parameterType="com.example.demo.model.TEndReportsExample" resultMap="BaseResultMap">
     select
@@ -107,16 +108,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.demo.model.TEndReports">
-    insert into t_end_reports (id, t_case_id, `result`, 
-      screen)
-    values (#{id,jdbcType=BIGINT}, #{tCaseId,jdbcType=BIGINT}, #{result,jdbcType=INTEGER}, 
-      #{screen,jdbcType=VARCHAR})
+    insert into t_end_reports (id, project_id, t_case_id, 
+      `result`, screen)
+    values (#{id,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{tCaseId,jdbcType=BIGINT}, 
+      #{result,jdbcType=INTEGER}, #{screen,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.TEndReports">
     insert into t_end_reports
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="projectId != null">
+        project_id,
       </if>
       <if test="tCaseId != null">
         t_case_id,
@@ -131,6 +135,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=BIGINT},
       </if>
       <if test="tCaseId != null">
         #{tCaseId,jdbcType=BIGINT},
@@ -155,6 +162,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
+      <if test="record.projectId != null">
+        project_id = #{record.projectId,jdbcType=BIGINT},
+      </if>
       <if test="record.tCaseId != null">
         t_case_id = #{record.tCaseId,jdbcType=BIGINT},
       </if>
@@ -172,6 +182,7 @@
   <update id="updateByExample" parameterType="map">
     update t_end_reports
     set id = #{record.id,jdbcType=BIGINT},
+      project_id = #{record.projectId,jdbcType=BIGINT},
       t_case_id = #{record.tCaseId,jdbcType=BIGINT},
       `result` = #{record.result,jdbcType=INTEGER},
       screen = #{record.screen,jdbcType=VARCHAR}
@@ -182,6 +193,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TEndReports">
     update t_end_reports
     <set>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=BIGINT},
+      </if>
       <if test="tCaseId != null">
         t_case_id = #{tCaseId,jdbcType=BIGINT},
       </if>
@@ -196,7 +210,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TEndReports">
     update t_end_reports
-    set t_case_id = #{tCaseId,jdbcType=BIGINT},
+    set project_id = #{projectId,jdbcType=BIGINT},
+      t_case_id = #{tCaseId,jdbcType=BIGINT},
       `result` = #{result,jdbcType=INTEGER},
       screen = #{screen,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
@@ -215,11 +230,11 @@
   </select>
   <insert id="batchInsert" parameterType="map">
     insert into t_end_reports
-    (id, t_case_id, `result`, screen)
+    (id, project_id, t_case_id, `result`, screen)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.id,jdbcType=BIGINT}, #{item.tCaseId,jdbcType=BIGINT}, #{item.result,jdbcType=INTEGER}, 
-        #{item.screen,jdbcType=VARCHAR})
+      (#{item.id,jdbcType=BIGINT}, #{item.projectId,jdbcType=BIGINT}, #{item.tCaseId,jdbcType=BIGINT}, 
+        #{item.result,jdbcType=INTEGER}, #{item.screen,jdbcType=VARCHAR})
     </foreach>
   </insert>
   <insert id="batchInsertSelective" parameterType="map">
@@ -234,6 +249,9 @@
       <foreach collection="selective" item="column" separator=",">
         <if test="'id'.toString() == column.value">
           #{item.id,jdbcType=BIGINT}
+        </if>
+        <if test="'project_id'.toString() == column.value">
+          #{item.projectId,jdbcType=BIGINT}
         </if>
         <if test="'t_case_id'.toString() == column.value">
           #{item.tCaseId,jdbcType=BIGINT}

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mappers.TEndConfMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.model.TEndConf">
+<mapper namespace="com.example.demo.mappers.TEndConfsMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.TEndConfs">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="project_id" jdbcType="BIGINT" property="projectId" />
     <result column="browser" jdbcType="INTEGER" property="browser" />
     <result column="window_size_width" jdbcType="INTEGER" property="windowSizeWidth" />
     <result column="window_size_height" jdbcType="INTEGER" property="windowSizeHeight" />
@@ -69,15 +70,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, browser, window_size_width, window_size_height, is_headless, test_url, t_case_id
+    id, project_id, browser, window_size_width, window_size_height, is_headless, test_url, 
+    t_case_id
   </sql>
-  <select id="selectByExample" parameterType="com.example.demo.model.TEndConfExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.model.TEndConfsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_end_conf
+    from t_end_confs
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -96,32 +98,35 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_end_conf
+    from t_end_confs
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_end_conf
+    delete from t_end_confs
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.demo.model.TEndConfExample">
-    delete from t_end_conf
+  <delete id="deleteByExample" parameterType="com.example.demo.model.TEndConfsExample">
+    delete from t_end_confs
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.demo.model.TEndConf">
-    insert into t_end_conf (id, browser, window_size_width, 
-      window_size_height, is_headless, test_url, 
-      t_case_id)
-    values (#{id,jdbcType=BIGINT}, #{browser,jdbcType=INTEGER}, #{windowSizeWidth,jdbcType=INTEGER}, 
-      #{windowSizeHeight,jdbcType=INTEGER}, #{isHeadless,jdbcType=INTEGER}, #{testUrl,jdbcType=VARCHAR}, 
-      #{tCaseId,jdbcType=BIGINT})
+  <insert id="insert" parameterType="com.example.demo.model.TEndConfs">
+    insert into t_end_confs (id, project_id, browser, 
+      window_size_width, window_size_height, is_headless, 
+      test_url, t_case_id)
+    values (#{id,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{browser,jdbcType=INTEGER}, 
+      #{windowSizeWidth,jdbcType=INTEGER}, #{windowSizeHeight,jdbcType=INTEGER}, #{isHeadless,jdbcType=INTEGER}, 
+      #{testUrl,jdbcType=VARCHAR}, #{tCaseId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.model.TEndConf">
-    insert into t_end_conf
+  <insert id="insertSelective" parameterType="com.example.demo.model.TEndConfs">
+    insert into t_end_confs
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="projectId != null">
+        project_id,
       </if>
       <if test="browser != null">
         browser,
@@ -146,6 +151,9 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=BIGINT},
+      </if>
       <if test="browser != null">
         #{browser,jdbcType=INTEGER},
       </if>
@@ -166,17 +174,20 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.demo.model.TEndConfExample" resultType="java.lang.Long">
-    select count(*) from t_end_conf
+  <select id="countByExample" parameterType="com.example.demo.model.TEndConfsExample" resultType="java.lang.Long">
+    select count(*) from t_end_confs
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update t_end_conf
+    update t_end_confs
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.projectId != null">
+        project_id = #{record.projectId,jdbcType=BIGINT},
       </if>
       <if test="record.browser != null">
         browser = #{record.browser,jdbcType=INTEGER},
@@ -202,8 +213,9 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update t_end_conf
+    update t_end_confs
     set id = #{record.id,jdbcType=BIGINT},
+      project_id = #{record.projectId,jdbcType=BIGINT},
       browser = #{record.browser,jdbcType=INTEGER},
       window_size_width = #{record.windowSizeWidth,jdbcType=INTEGER},
       window_size_height = #{record.windowSizeHeight,jdbcType=INTEGER},
@@ -214,9 +226,12 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TEndConf">
-    update t_end_conf
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TEndConfs">
+    update t_end_confs
     <set>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=BIGINT},
+      </if>
       <if test="browser != null">
         browser = #{browser,jdbcType=INTEGER},
       </if>
@@ -238,9 +253,10 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TEndConf">
-    update t_end_conf
-    set browser = #{browser,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TEndConfs">
+    update t_end_confs
+    set project_id = #{projectId,jdbcType=BIGINT},
+      browser = #{browser,jdbcType=INTEGER},
       window_size_width = #{windowSizeWidth,jdbcType=INTEGER},
       window_size_height = #{windowSizeHeight,jdbcType=INTEGER},
       is_headless = #{isHeadless,jdbcType=INTEGER},
@@ -248,10 +264,10 @@
       t_case_id = #{tCaseId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectOneByExample" parameterType="com.example.demo.model.TEndConfExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="com.example.demo.model.TEndConfsExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from t_end_conf
+    from t_end_confs
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -261,18 +277,19 @@
     limit 1
   </select>
   <insert id="batchInsert" parameterType="map">
-    insert into t_end_conf
-    (id, browser, window_size_width, window_size_height, is_headless, test_url, t_case_id
-      )
+    insert into t_end_confs
+    (id, project_id, browser, window_size_width, window_size_height, is_headless, test_url, 
+      t_case_id)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.id,jdbcType=BIGINT}, #{item.browser,jdbcType=INTEGER}, #{item.windowSizeWidth,jdbcType=INTEGER}, 
-        #{item.windowSizeHeight,jdbcType=INTEGER}, #{item.isHeadless,jdbcType=INTEGER}, 
-        #{item.testUrl,jdbcType=VARCHAR}, #{item.tCaseId,jdbcType=BIGINT})
+      (#{item.id,jdbcType=BIGINT}, #{item.projectId,jdbcType=BIGINT}, #{item.browser,jdbcType=INTEGER}, 
+        #{item.windowSizeWidth,jdbcType=INTEGER}, #{item.windowSizeHeight,jdbcType=INTEGER}, 
+        #{item.isHeadless,jdbcType=INTEGER}, #{item.testUrl,jdbcType=VARCHAR}, #{item.tCaseId,jdbcType=BIGINT}
+        )
     </foreach>
   </insert>
   <insert id="batchInsertSelective" parameterType="map">
-    insert into t_end_conf (
+    insert into t_end_confs (
     <foreach collection="selective" item="column" separator=",">
       ${column.escapedColumnName}
     </foreach>
@@ -283,6 +300,9 @@
       <foreach collection="selective" item="column" separator=",">
         <if test="'id'.toString() == column.value">
           #{item.id,jdbcType=BIGINT}
+        </if>
+        <if test="'project_id'.toString() == column.value">
+          #{item.projectId,jdbcType=BIGINT}
         </if>
         <if test="'browser'.toString() == column.value">
           #{item.browser,jdbcType=INTEGER}

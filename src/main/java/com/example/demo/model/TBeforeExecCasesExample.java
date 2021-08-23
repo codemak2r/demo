@@ -3,7 +3,7 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TBeforeExecCaseExample {
+public class TBeforeExecCasesExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -14,7 +14,7 @@ public class TBeforeExecCaseExample {
 
     protected Integer rows;
 
-    public TBeforeExecCaseExample() {
+    public TBeforeExecCasesExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -48,12 +48,12 @@ public class TBeforeExecCaseExample {
         return criteria;
     }
 
-    public TBeforeExecCaseExample orderBy(String orderByClause) {
+    public TBeforeExecCasesExample orderBy(String orderByClause) {
         this.setOrderByClause(orderByClause);
         return this;
     }
 
-    public TBeforeExecCaseExample orderBy(String ... orderByClauses) {
+    public TBeforeExecCasesExample orderBy(String ... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -102,36 +102,36 @@ public class TBeforeExecCaseExample {
         return this.rows;
     }
 
-    public TBeforeExecCaseExample limit(Integer rows) {
+    public TBeforeExecCasesExample limit(Integer rows) {
         this.rows = rows;
         return this;
     }
 
-    public TBeforeExecCaseExample limit(Integer offset, Integer rows) {
+    public TBeforeExecCasesExample limit(Integer offset, Integer rows) {
         this.offset = offset;
         this.rows = rows;
         return this;
     }
 
-    public TBeforeExecCaseExample page(Integer page, Integer pageSize) {
+    public TBeforeExecCasesExample page(Integer page, Integer pageSize) {
         this.offset = page * pageSize;
         this.rows = pageSize;
         return this;
     }
 
     public static Criteria newAndCreateCriteria() {
-        TBeforeExecCaseExample example = new TBeforeExecCaseExample();
+        TBeforeExecCasesExample example = new TBeforeExecCasesExample();
         return example.createCriteria();
     }
 
-    public TBeforeExecCaseExample when(boolean condition, IExampleWhen then) {
+    public TBeforeExecCasesExample when(boolean condition, IExampleWhen then) {
         if (condition) {
             then.example(this);
         }
         return this;
     }
 
-    public TBeforeExecCaseExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
+    public TBeforeExecCasesExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
         if (condition) {
             then.example(this);
         } else {
@@ -196,7 +196,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andIdEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -206,7 +206,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andIdNotEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -216,7 +216,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanColumn(TBeforeExecCase.Column column) {
+        public Criteria andIdGreaterThanColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -226,7 +226,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andIdGreaterThanOrEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -236,7 +236,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanColumn(TBeforeExecCase.Column column) {
+        public Criteria andIdLessThanColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -246,7 +246,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andIdLessThanOrEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -271,6 +271,96 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
+        public Criteria andProjectIdIsNull() {
+            addCriterion("project_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdIsNotNull() {
+            addCriterion("project_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdEqualTo(Long value) {
+            addCriterion("project_id =", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdEqualToColumn(TBeforeExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotEqualTo(Long value) {
+            addCriterion("project_id <>", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotEqualToColumn(TBeforeExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThan(Long value) {
+            addCriterion("project_id >", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanColumn(TBeforeExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("project_id >=", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanOrEqualToColumn(TBeforeExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThan(Long value) {
+            addCriterion("project_id <", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanColumn(TBeforeExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanOrEqualTo(Long value) {
+            addCriterion("project_id <=", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanOrEqualToColumn(TBeforeExecCases.Column column) {
+            addCriterion(new StringBuilder("project_id <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdIn(List<Long> values) {
+            addCriterion("project_id in", values, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotIn(List<Long> values) {
+            addCriterion("project_id not in", values, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdBetween(Long value1, Long value2) {
+            addCriterion("project_id between", value1, value2, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotBetween(Long value1, Long value2) {
+            addCriterion("project_id not between", value1, value2, "projectId");
+            return (Criteria) this;
+        }
+
         public Criteria andBeforeCaseIdIsNull() {
             addCriterion("before_case_id is null");
             return (Criteria) this;
@@ -286,7 +376,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andBeforeCaseIdEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andBeforeCaseIdEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("before_case_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -296,7 +386,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andBeforeCaseIdNotEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andBeforeCaseIdNotEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("before_case_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -306,7 +396,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andBeforeCaseIdGreaterThanColumn(TBeforeExecCase.Column column) {
+        public Criteria andBeforeCaseIdGreaterThanColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("before_case_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -316,7 +406,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andBeforeCaseIdGreaterThanOrEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andBeforeCaseIdGreaterThanOrEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("before_case_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -326,7 +416,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andBeforeCaseIdLessThanColumn(TBeforeExecCase.Column column) {
+        public Criteria andBeforeCaseIdLessThanColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("before_case_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -336,7 +426,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andBeforeCaseIdLessThanOrEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andBeforeCaseIdLessThanOrEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("before_case_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -376,7 +466,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andExecCaseIdEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -386,7 +476,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdNotEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andExecCaseIdNotEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -396,7 +486,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdGreaterThanColumn(TBeforeExecCase.Column column) {
+        public Criteria andExecCaseIdGreaterThanColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -406,7 +496,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdGreaterThanOrEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andExecCaseIdGreaterThanOrEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -416,7 +506,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdLessThanColumn(TBeforeExecCase.Column column) {
+        public Criteria andExecCaseIdLessThanColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -426,7 +516,7 @@ public class TBeforeExecCaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andExecCaseIdLessThanOrEqualToColumn(TBeforeExecCase.Column column) {
+        public Criteria andExecCaseIdLessThanOrEqualToColumn(TBeforeExecCases.Column column) {
             addCriterion(new StringBuilder("exec_case_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -453,14 +543,14 @@ public class TBeforeExecCaseExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private TBeforeExecCaseExample example;
+        private TBeforeExecCasesExample example;
 
-        protected Criteria(TBeforeExecCaseExample example) {
+        protected Criteria(TBeforeExecCasesExample example) {
             super();
             this.example = example;
         }
 
-        public TBeforeExecCaseExample example() {
+        public TBeforeExecCasesExample example() {
             return this.example;
         }
 
@@ -585,6 +675,6 @@ public class TBeforeExecCaseExample {
     }
 
     public interface IExampleWhen {
-        void example(com.example.demo.model.TBeforeExecCaseExample example);
+        void example(com.example.demo.model.TBeforeExecCasesExample example);
     }
 }

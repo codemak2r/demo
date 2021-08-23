@@ -3,31 +3,53 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TEndReports implements Serializable {
+public class TEndCases implements Serializable {
     private Long id;
 
     private Long projectId;
 
-    private Long tCaseId;
+    private String name;
+
+    private String desc;
+
+    private Integer status;
 
     private Integer result;
 
-    private String screen;
+    private String owner;
+
+    private String modifier;
+
+    private Date createdTime;
+
+    private Date modifiedTime;
+
+    private Integer isBefore;
+
+    private Integer isAfter;
 
     private static final long serialVersionUID = 1L;
 
     public enum Column {
         id("id", "id", "BIGINT", false),
         projectId("project_id", "projectId", "BIGINT", false),
-        tCaseId("t_case_id", "tCaseId", "BIGINT", false),
+        name("name", "name", "VARCHAR", true),
+        desc("desc", "desc", "VARCHAR", true),
+        status("status", "status", "INTEGER", true),
         result("result", "result", "INTEGER", true),
-        screen("screen", "screen", "VARCHAR", false);
+        owner("owner", "owner", "VARCHAR", true),
+        modifier("modifier", "modifier", "VARCHAR", false),
+        createdTime("created_time", "createdTime", "TIMESTAMP", false),
+        modifiedTime("modified_time", "modifiedTime", "TIMESTAMP", false),
+        isBefore("is_before", "isBefore", "INTEGER", false),
+        isAfter("is_after", "isAfter", "INTEGER", false);
 
         private static final String BEGINNING_DELIMITER = "`";
 

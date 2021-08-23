@@ -3,34 +3,30 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class TEndConf implements Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class TBeforeExecCases implements Serializable {
     private Long id;
 
-    private Integer browser;
+    private Long projectId;
 
-    private Integer windowSizeWidth;
+    @JsonProperty(value = "before")
+    private Long beforeCaseId;
 
-    private Integer windowSizeHeight;
-
-    private Integer isHeadless;
-
-    private String testUrl;
-
-    private Long tCaseId;
+    private Long execCaseId;
 
     private static final long serialVersionUID = 1L;
 
     public enum Column {
         id("id", "id", "BIGINT", false),
-        browser("browser", "browser", "INTEGER", false),
-        windowSizeWidth("window_size_width", "windowSizeWidth", "INTEGER", false),
-        windowSizeHeight("window_size_height", "windowSizeHeight", "INTEGER", false),
-        isHeadless("is_headless", "isHeadless", "INTEGER", false),
-        testUrl("test_url", "testUrl", "VARCHAR", false),
-        tCaseId("t_case_id", "tCaseId", "BIGINT", false);
+        projectId("project_id", "projectId", "BIGINT", false),
+        beforeCaseId("before_case_id", "beforeCaseId", "BIGINT", false),
+        execCaseId("exec_case_id", "execCaseId", "BIGINT", false);
 
         private static final String BEGINNING_DELIMITER = "`";
 

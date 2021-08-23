@@ -3,7 +3,7 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TEndConfExample {
+public class TEndConfsExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -14,7 +14,7 @@ public class TEndConfExample {
 
     protected Integer rows;
 
-    public TEndConfExample() {
+    public TEndConfsExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -48,12 +48,12 @@ public class TEndConfExample {
         return criteria;
     }
 
-    public TEndConfExample orderBy(String orderByClause) {
+    public TEndConfsExample orderBy(String orderByClause) {
         this.setOrderByClause(orderByClause);
         return this;
     }
 
-    public TEndConfExample orderBy(String ... orderByClauses) {
+    public TEndConfsExample orderBy(String ... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -102,36 +102,36 @@ public class TEndConfExample {
         return this.rows;
     }
 
-    public TEndConfExample limit(Integer rows) {
+    public TEndConfsExample limit(Integer rows) {
         this.rows = rows;
         return this;
     }
 
-    public TEndConfExample limit(Integer offset, Integer rows) {
+    public TEndConfsExample limit(Integer offset, Integer rows) {
         this.offset = offset;
         this.rows = rows;
         return this;
     }
 
-    public TEndConfExample page(Integer page, Integer pageSize) {
+    public TEndConfsExample page(Integer page, Integer pageSize) {
         this.offset = page * pageSize;
         this.rows = pageSize;
         return this;
     }
 
     public static Criteria newAndCreateCriteria() {
-        TEndConfExample example = new TEndConfExample();
+        TEndConfsExample example = new TEndConfsExample();
         return example.createCriteria();
     }
 
-    public TEndConfExample when(boolean condition, IExampleWhen then) {
+    public TEndConfsExample when(boolean condition, IExampleWhen then) {
         if (condition) {
             then.example(this);
         }
         return this;
     }
 
-    public TEndConfExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
+    public TEndConfsExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
         if (condition) {
             then.example(this);
         } else {
@@ -196,7 +196,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualToColumn(TEndConf.Column column) {
+        public Criteria andIdEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -206,7 +206,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualToColumn(TEndConf.Column column) {
+        public Criteria andIdNotEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -216,7 +216,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanColumn(TEndConf.Column column) {
+        public Criteria andIdGreaterThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -226,7 +226,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andIdGreaterThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -236,7 +236,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanColumn(TEndConf.Column column) {
+        public Criteria andIdLessThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -246,7 +246,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andIdLessThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -271,6 +271,96 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
+        public Criteria andProjectIdIsNull() {
+            addCriterion("project_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdIsNotNull() {
+            addCriterion("project_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdEqualTo(Long value) {
+            addCriterion("project_id =", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdEqualToColumn(TEndConfs.Column column) {
+            addCriterion(new StringBuilder("project_id = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotEqualTo(Long value) {
+            addCriterion("project_id <>", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotEqualToColumn(TEndConfs.Column column) {
+            addCriterion(new StringBuilder("project_id <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThan(Long value) {
+            addCriterion("project_id >", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanColumn(TEndConfs.Column column) {
+            addCriterion(new StringBuilder("project_id > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("project_id >=", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdGreaterThanOrEqualToColumn(TEndConfs.Column column) {
+            addCriterion(new StringBuilder("project_id >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThan(Long value) {
+            addCriterion("project_id <", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanColumn(TEndConfs.Column column) {
+            addCriterion(new StringBuilder("project_id < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanOrEqualTo(Long value) {
+            addCriterion("project_id <=", value, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdLessThanOrEqualToColumn(TEndConfs.Column column) {
+            addCriterion(new StringBuilder("project_id <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdIn(List<Long> values) {
+            addCriterion("project_id in", values, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotIn(List<Long> values) {
+            addCriterion("project_id not in", values, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdBetween(Long value1, Long value2) {
+            addCriterion("project_id between", value1, value2, "projectId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectIdNotBetween(Long value1, Long value2) {
+            addCriterion("project_id not between", value1, value2, "projectId");
+            return (Criteria) this;
+        }
+
         public Criteria andBrowserIsNull() {
             addCriterion("browser is null");
             return (Criteria) this;
@@ -286,7 +376,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrowserEqualToColumn(TEndConf.Column column) {
+        public Criteria andBrowserEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("browser = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -296,7 +386,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrowserNotEqualToColumn(TEndConf.Column column) {
+        public Criteria andBrowserNotEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("browser <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -306,7 +396,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrowserGreaterThanColumn(TEndConf.Column column) {
+        public Criteria andBrowserGreaterThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("browser > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -316,7 +406,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrowserGreaterThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andBrowserGreaterThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("browser >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -326,7 +416,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrowserLessThanColumn(TEndConf.Column column) {
+        public Criteria andBrowserLessThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("browser < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -336,7 +426,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrowserLessThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andBrowserLessThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("browser <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -376,7 +466,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeWidthEqualToColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeWidthEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_width = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -386,7 +476,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeWidthNotEqualToColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeWidthNotEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_width <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -396,7 +486,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeWidthGreaterThanColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeWidthGreaterThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_width > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -406,7 +496,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeWidthGreaterThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeWidthGreaterThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_width >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -416,7 +506,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeWidthLessThanColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeWidthLessThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_width < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -426,7 +516,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeWidthLessThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeWidthLessThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_width <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -466,7 +556,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeHeightEqualToColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeHeightEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_height = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -476,7 +566,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeHeightNotEqualToColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeHeightNotEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_height <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -486,7 +576,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeHeightGreaterThanColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeHeightGreaterThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_height > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -496,7 +586,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeHeightGreaterThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeHeightGreaterThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_height >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -506,7 +596,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeHeightLessThanColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeHeightLessThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_height < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -516,7 +606,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andWindowSizeHeightLessThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andWindowSizeHeightLessThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("window_size_height <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -556,7 +646,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsHeadlessEqualToColumn(TEndConf.Column column) {
+        public Criteria andIsHeadlessEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("is_headless = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -566,7 +656,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsHeadlessNotEqualToColumn(TEndConf.Column column) {
+        public Criteria andIsHeadlessNotEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("is_headless <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -576,7 +666,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsHeadlessGreaterThanColumn(TEndConf.Column column) {
+        public Criteria andIsHeadlessGreaterThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("is_headless > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -586,7 +676,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsHeadlessGreaterThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andIsHeadlessGreaterThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("is_headless >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -596,7 +686,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsHeadlessLessThanColumn(TEndConf.Column column) {
+        public Criteria andIsHeadlessLessThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("is_headless < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -606,7 +696,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsHeadlessLessThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andIsHeadlessLessThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("is_headless <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -646,7 +736,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTestUrlEqualToColumn(TEndConf.Column column) {
+        public Criteria andTestUrlEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("test_url = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -656,7 +746,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTestUrlNotEqualToColumn(TEndConf.Column column) {
+        public Criteria andTestUrlNotEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("test_url <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -666,7 +756,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTestUrlGreaterThanColumn(TEndConf.Column column) {
+        public Criteria andTestUrlGreaterThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("test_url > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -676,7 +766,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTestUrlGreaterThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andTestUrlGreaterThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("test_url >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -686,7 +776,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTestUrlLessThanColumn(TEndConf.Column column) {
+        public Criteria andTestUrlLessThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("test_url < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -696,7 +786,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTestUrlLessThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andTestUrlLessThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("test_url <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -746,7 +836,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTCaseIdEqualToColumn(TEndConf.Column column) {
+        public Criteria andTCaseIdEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("t_case_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -756,7 +846,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTCaseIdNotEqualToColumn(TEndConf.Column column) {
+        public Criteria andTCaseIdNotEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("t_case_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -766,7 +856,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTCaseIdGreaterThanColumn(TEndConf.Column column) {
+        public Criteria andTCaseIdGreaterThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("t_case_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -776,7 +866,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTCaseIdGreaterThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andTCaseIdGreaterThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("t_case_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -786,7 +876,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTCaseIdLessThanColumn(TEndConf.Column column) {
+        public Criteria andTCaseIdLessThanColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("t_case_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -796,7 +886,7 @@ public class TEndConfExample {
             return (Criteria) this;
         }
 
-        public Criteria andTCaseIdLessThanOrEqualToColumn(TEndConf.Column column) {
+        public Criteria andTCaseIdLessThanOrEqualToColumn(TEndConfs.Column column) {
             addCriterion(new StringBuilder("t_case_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -823,14 +913,14 @@ public class TEndConfExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private TEndConfExample example;
+        private TEndConfsExample example;
 
-        protected Criteria(TEndConfExample example) {
+        protected Criteria(TEndConfsExample example) {
             super();
             this.example = example;
         }
 
-        public TEndConfExample example() {
+        public TEndConfsExample example() {
             return this.example;
         }
 
@@ -955,6 +1045,6 @@ public class TEndConfExample {
     }
 
     public interface IExampleWhen {
-        void example(com.example.demo.model.TEndConfExample example);
+        void example(com.example.demo.model.TEndConfsExample example);
     }
 }

@@ -14,6 +14,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public GlobalResult<String> exceptionHandler(Exception e) {
         log.error(e.getMessage());
+        e.printStackTrace();
         return GlobalResult.error("服务器异常：" + e.getMessage());
     }
 }

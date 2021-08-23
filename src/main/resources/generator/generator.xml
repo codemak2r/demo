@@ -81,13 +81,16 @@
         <table tableName="test_case_review_scenario"/>
         <table tableName="test_plan"/>
         <table tableName="test_case_test"/>-->
-        <table tableName="t_end_case">
+        <table tableName="t_end_projects">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="t_end_conf"></table>
+        <table tableName="t_end_cases">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="t_end_confs"></table>
         <table tableName="t_end_steps"></table>
-        <table tableName="t_before_exec_case"></table>
-        <table tableName="t_after_exec_case"></table>
+        <table tableName="t_before_exec_cases"></table>
+        <table tableName="t_after_exec_cases"></table>
         <table tableName="t_end_steps"></table>
         <table tableName="t_end_reports"></table>
 

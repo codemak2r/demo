@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration debug="false">
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <!-- reset all previous level configurations of all j.u.l. loggers -->
+        <resetJUL>true</resetJUL>
+    </contextListener>
     <springProperty scope="context" name="logging.path" source="logging.path"/>
     <springProperty scope="context" name="logging.name" source="logging.file"/>
     <springProperty scope="context" name="logging.level" source="logging.level.root"/>

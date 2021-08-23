@@ -3,6 +3,7 @@
 <mapper namespace="com.example.demo.mappers.TEndStepsMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.model.TEndSteps">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="project_id" jdbcType="BIGINT" property="projectId" />
     <result column="t_case_id" jdbcType="BIGINT" property="tCaseId" />
     <result column="action" jdbcType="VARCHAR" property="action" />
     <result column="element_type" jdbcType="VARCHAR" property="elementType" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, t_case_id, `action`, element_type, `element`, val, order_no
+    id, project_id, t_case_id, `action`, element_type, `element`, val, order_no
   </sql>
   <select id="selectByExample" parameterType="com.example.demo.model.TEndStepsExample" resultMap="BaseResultMap">
     select
@@ -110,18 +111,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.demo.model.TEndSteps">
-    insert into t_end_steps (id, t_case_id, `action`, 
-      element_type, `element`, val, 
-      order_no)
-    values (#{id,jdbcType=BIGINT}, #{tCaseId,jdbcType=BIGINT}, #{action,jdbcType=VARCHAR}, 
-      #{elementType,jdbcType=VARCHAR}, #{element,jdbcType=VARCHAR}, #{val,jdbcType=VARCHAR}, 
-      #{orderNo,jdbcType=DOUBLE})
+    insert into t_end_steps (id, project_id, t_case_id, 
+      `action`, element_type, `element`, 
+      val, order_no)
+    values (#{id,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{tCaseId,jdbcType=BIGINT}, 
+      #{action,jdbcType=VARCHAR}, #{elementType,jdbcType=VARCHAR}, #{element,jdbcType=VARCHAR}, 
+      #{val,jdbcType=VARCHAR}, #{orderNo,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.TEndSteps">
     insert into t_end_steps
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="projectId != null">
+        project_id,
       </if>
       <if test="tCaseId != null">
         t_case_id,
@@ -145,6 +149,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=BIGINT},
       </if>
       <if test="tCaseId != null">
         #{tCaseId,jdbcType=BIGINT},
@@ -178,6 +185,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
+      <if test="record.projectId != null">
+        project_id = #{record.projectId,jdbcType=BIGINT},
+      </if>
       <if test="record.tCaseId != null">
         t_case_id = #{record.tCaseId,jdbcType=BIGINT},
       </if>
@@ -204,6 +214,7 @@
   <update id="updateByExample" parameterType="map">
     update t_end_steps
     set id = #{record.id,jdbcType=BIGINT},
+      project_id = #{record.projectId,jdbcType=BIGINT},
       t_case_id = #{record.tCaseId,jdbcType=BIGINT},
       `action` = #{record.action,jdbcType=VARCHAR},
       element_type = #{record.elementType,jdbcType=VARCHAR},
@@ -217,6 +228,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TEndSteps">
     update t_end_steps
     <set>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=BIGINT},
+      </if>
       <if test="tCaseId != null">
         t_case_id = #{tCaseId,jdbcType=BIGINT},
       </if>
@@ -240,7 +254,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TEndSteps">
     update t_end_steps
-    set t_case_id = #{tCaseId,jdbcType=BIGINT},
+    set project_id = #{projectId,jdbcType=BIGINT},
+      t_case_id = #{tCaseId,jdbcType=BIGINT},
       `action` = #{action,jdbcType=VARCHAR},
       element_type = #{elementType,jdbcType=VARCHAR},
       `element` = #{element,jdbcType=VARCHAR},
@@ -262,12 +277,12 @@
   </select>
   <insert id="batchInsert" parameterType="map">
     insert into t_end_steps
-    (id, t_case_id, `action`, element_type, `element`, val, order_no)
+    (id, project_id, t_case_id, `action`, element_type, `element`, val, order_no)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.id,jdbcType=BIGINT}, #{item.tCaseId,jdbcType=BIGINT}, #{item.action,jdbcType=VARCHAR}, 
-        #{item.elementType,jdbcType=VARCHAR}, #{item.element,jdbcType=VARCHAR}, #{item.val,jdbcType=VARCHAR}, 
-        #{item.orderNo,jdbcType=DOUBLE})
+      (#{item.id,jdbcType=BIGINT}, #{item.projectId,jdbcType=BIGINT}, #{item.tCaseId,jdbcType=BIGINT}, 
+        #{item.action,jdbcType=VARCHAR}, #{item.elementType,jdbcType=VARCHAR}, #{item.element,jdbcType=VARCHAR}, 
+        #{item.val,jdbcType=VARCHAR}, #{item.orderNo,jdbcType=DOUBLE})
     </foreach>
   </insert>
   <insert id="batchInsertSelective" parameterType="map">
@@ -282,6 +297,9 @@
       <foreach collection="selective" item="column" separator=",">
         <if test="'id'.toString() == column.value">
           #{item.id,jdbcType=BIGINT}
+        </if>
+        <if test="'project_id'.toString() == column.value">
+          #{item.projectId,jdbcType=BIGINT}
         </if>
         <if test="'t_case_id'.toString() == column.value">
           #{item.tCaseId,jdbcType=BIGINT}

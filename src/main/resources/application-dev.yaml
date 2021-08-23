@@ -117,3 +117,7 @@ flyway:
   schemas: qautils
   # 执行迁移时是否自动调用验证   当你的版本不符合逻辑 比如 你先执行了 DML 而没有 对应的DDL 会抛出异常
   validate-on-migrate: true
+pagehelper:
+  autoDialect: true
+  closeConn: true
+  offset-as-page: false

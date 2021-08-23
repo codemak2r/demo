@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mappers.TAfterExecCaseMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.model.TAfterExecCase">
+<mapper namespace="com.example.demo.mappers.TBeforeExecCasesMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.TBeforeExecCases">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="after_case_id" jdbcType="BIGINT" property="afterCaseId" />
+    <result column="project_id" jdbcType="BIGINT" property="projectId" />
+    <result column="before_case_id" jdbcType="BIGINT" property="beforeCaseId" />
     <result column="exec_case_id" jdbcType="BIGINT" property="execCaseId" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -65,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, after_case_id, exec_case_id
+    id, project_id, before_case_id, exec_case_id
   </sql>
-  <select id="selectByExample" parameterType="com.example.demo.model.TAfterExecCaseExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.demo.model.TBeforeExecCasesExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_after_exec_case
+    from t_before_exec_cases
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,33 +93,36 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_after_exec_case
+    from t_before_exec_cases
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_after_exec_case
+    delete from t_before_exec_cases
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.demo.model.TAfterExecCaseExample">
-    delete from t_after_exec_case
+  <delete id="deleteByExample" parameterType="com.example.demo.model.TBeforeExecCasesExample">
+    delete from t_before_exec_cases
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.demo.model.TAfterExecCase">
-    insert into t_after_exec_case (id, after_case_id, exec_case_id
-      )
-    values (#{id,jdbcType=BIGINT}, #{afterCaseId,jdbcType=BIGINT}, #{execCaseId,jdbcType=BIGINT}
-      )
+  <insert id="insert" parameterType="com.example.demo.model.TBeforeExecCases">
+    insert into t_before_exec_cases (id, project_id, before_case_id, 
+      exec_case_id)
+    values (#{id,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{beforeCaseId,jdbcType=BIGINT}, 
+      #{execCaseId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.model.TAfterExecCase">
-    insert into t_after_exec_case
+  <insert id="insertSelective" parameterType="com.example.demo.model.TBeforeExecCases">
+    insert into t_before_exec_cases
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="afterCaseId != null">
-        after_case_id,
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="beforeCaseId != null">
+        before_case_id,
       </if>
       <if test="execCaseId != null">
         exec_case_id,
@@ -128,28 +132,34 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="afterCaseId != null">
-        #{afterCaseId,jdbcType=BIGINT},
+      <if test="projectId != null">
+        #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="beforeCaseId != null">
+        #{beforeCaseId,jdbcType=BIGINT},
       </if>
       <if test="execCaseId != null">
         #{execCaseId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.demo.model.TAfterExecCaseExample" resultType="java.lang.Long">
-    select count(*) from t_after_exec_case
+  <select id="countByExample" parameterType="com.example.demo.model.TBeforeExecCasesExample" resultType="java.lang.Long">
+    select count(*) from t_before_exec_cases
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update t_after_exec_case
+    update t_before_exec_cases
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.afterCaseId != null">
-        after_case_id = #{record.afterCaseId,jdbcType=BIGINT},
+      <if test="record.projectId != null">
+        project_id = #{record.projectId,jdbcType=BIGINT},
+      </if>
+      <if test="record.beforeCaseId != null">
+        before_case_id = #{record.beforeCaseId,jdbcType=BIGINT},
       </if>
       <if test="record.execCaseId != null">
         exec_case_id = #{record.execCaseId,jdbcType=BIGINT},
@@ -160,19 +170,23 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update t_after_exec_case
+    update t_before_exec_cases
     set id = #{record.id,jdbcType=BIGINT},
-      after_case_id = #{record.afterCaseId,jdbcType=BIGINT},
+      project_id = #{record.projectId,jdbcType=BIGINT},
+      before_case_id = #{record.beforeCaseId,jdbcType=BIGINT},
       exec_case_id = #{record.execCaseId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TAfterExecCase">
-    update t_after_exec_case
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.TBeforeExecCases">
+    update t_before_exec_cases
     <set>
-      <if test="afterCaseId != null">
-        after_case_id = #{afterCaseId,jdbcType=BIGINT},
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="beforeCaseId != null">
+        before_case_id = #{beforeCaseId,jdbcType=BIGINT},
       </if>
       <if test="execCaseId != null">
         exec_case_id = #{execCaseId,jdbcType=BIGINT},
@@ -180,16 +194,17 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TAfterExecCase">
-    update t_after_exec_case
-    set after_case_id = #{afterCaseId,jdbcType=BIGINT},
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TBeforeExecCases">
+    update t_before_exec_cases
+    set project_id = #{projectId,jdbcType=BIGINT},
+      before_case_id = #{beforeCaseId,jdbcType=BIGINT},
       exec_case_id = #{execCaseId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectOneByExample" parameterType="com.example.demo.model.TAfterExecCaseExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="com.example.demo.model.TBeforeExecCasesExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from t_after_exec_case
+    from t_before_exec_cases
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -199,16 +214,16 @@
     limit 1
   </select>
   <insert id="batchInsert" parameterType="map">
-    insert into t_after_exec_case
-    (id, after_case_id, exec_case_id)
+    insert into t_before_exec_cases
+    (id, project_id, before_case_id, exec_case_id)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.id,jdbcType=BIGINT}, #{item.afterCaseId,jdbcType=BIGINT}, #{item.execCaseId,jdbcType=BIGINT}
-        )
+      (#{item.id,jdbcType=BIGINT}, #{item.projectId,jdbcType=BIGINT}, #{item.beforeCaseId,jdbcType=BIGINT}, 
+        #{item.execCaseId,jdbcType=BIGINT})
     </foreach>
   </insert>
   <insert id="batchInsertSelective" parameterType="map">
-    insert into t_after_exec_case (
+    insert into t_before_exec_cases (
     <foreach collection="selective" item="column" separator=",">
       ${column.escapedColumnName}
     </foreach>
@@ -220,8 +235,11 @@
         <if test="'id'.toString() == column.value">
           #{item.id,jdbcType=BIGINT}
         </if>
-        <if test="'after_case_id'.toString() == column.value">
-          #{item.afterCaseId,jdbcType=BIGINT}
+        <if test="'project_id'.toString() == column.value">
+          #{item.projectId,jdbcType=BIGINT}
+        </if>
+        <if test="'before_case_id'.toString() == column.value">
+          #{item.beforeCaseId,jdbcType=BIGINT}
         </if>
         <if test="'exec_case_id'.toString() == column.value">
           #{item.execCaseId,jdbcType=BIGINT}
